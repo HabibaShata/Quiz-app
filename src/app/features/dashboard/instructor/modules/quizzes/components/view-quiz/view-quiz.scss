@@ -1,12 +1,15 @@
+//to change direction icon (>) in arabic to (<)
+:host-context([dir='rtl']) ::ng-deep .p-breadcrumb-separator .p-icon {
+  transform: rotate(180deg);
+}
+
 .quiz-card {
   width: 450px;
-  border: 1px solid rgba(0, 0, 0, 0.22);
+  border: 2px solid rgba(0, 0, 0, 0.22);
   border-radius: 16px;
   padding: 8px 24px 24px;
   background: #fff;
 }
-
-
 
 .quiz-card h2 {
   font-size: 32px;
@@ -25,7 +28,6 @@
   align-items: center;
   gap: 10px;
   font-size: 18px;
-
 }
 
 .date-item i {
@@ -36,7 +38,7 @@
 
 .info-row {
   display: flex;
-  border: 1px solid #d8d8d8;
+  border: 2px solid rgba(0, 0, 0, 0.22);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 14px;
@@ -47,6 +49,7 @@
   background: #fff2e8;
   padding: 12px 16px;
   font-weight: 700;
+  border-radius: 0 12px 12px 0;
 }
 
 .info-row span:last-child {
@@ -74,30 +77,23 @@
   font-weight: 400;
 }
 
-
-
 :host ::ng-deep button.edit-btn {
-  background-color: #0D1321 !important;
-  border-color: #0D1321 !important;
+  background-color: #0d1321 !important;
+  border-color: #0d1321 !important;
   color: #fff !important;
-
 }
 
 :host ::ng-deep button.edit-btn:hover {
   background: #1b2233 !important;
   border-color: #1b2233 !important;
-
 }
 :host ::ng-deep .edit-btn,
 :host ::ng-deep .delete-btn {
   min-width: 110px;
   justify-content: center;
-
 }
 
 :host ::ng-deep .edit-btn .p-button-label,
 :host ::ng-deep .delete-btn .p-button-label {
   font-weight: 700;
 }
-
-
