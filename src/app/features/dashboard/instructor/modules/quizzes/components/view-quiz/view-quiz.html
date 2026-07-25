@@ -63,14 +63,14 @@
   <div class="flex justify-content-end gap-2">
 
   <!-- Delete -->
-  <!-- <button
+  <button
     pButton
     type="button"
     icon="pi pi-trash"
     severity="danger"
     [text]="true"
     (click)="openDeleteDialog()">
-  </button> -->
+  </button>
 
   <!-- Edit -->
   <button
@@ -88,9 +88,9 @@
 }
 
 
-<!-- <app-delete
+<app-delete
   [visible]="showDeleteDialog()"
   [config]="deleteConfig()"
   (visibleChange)="showDeleteDialog.set($event)"
   (confirmed)="deleteQuiz()">
-</app-delete> -->
+</app-delete>

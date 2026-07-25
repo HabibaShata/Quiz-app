@@ -55,10 +55,13 @@ buildBreadcrumbs() {
 
   const id = this.route.snapshot.paramMap.get('id');
 
+
   if (!id) return;
+
 
   this.quizzesService.getQuizById(id).subscribe({
   next: (res) => {
+    
     this.quiz.set(res);
     this.buildBreadcrumbs();
   },
@@ -66,39 +69,39 @@ buildBreadcrumbs() {
 }
 
 
-// openDeleteDialog() {
-//   this.showDeleteDialog.set(true);
-// }
+openDeleteDialog() {
+  this.showDeleteDialog.set(true);
+}
 
-// deleteConfig = computed<DeleteConfig>(() => ({
-//   title: 'Delete Quiz',
-//   confirmMessage: 'Are you sure you want to delete this quiz?',
-//   warningNote: 'This action cannot be undone.',
-//   item: {
-//     name: this.quiz()?.title ?? '',
-//     subtitle: 'Quiz',
-//     icon: 'pi pi-book',
-//     iconBg: 'dark',
-//   },
-// }));
-
-
+deleteConfig = computed<DeleteConfig>(() => ({
+  title: 'Delete Quiz',
+  confirmMessage: 'Are you sure you want to delete this quiz?',
+  warningNote: 'This action cannot be undone.',
+  item: {
+    name: this.quiz()?.title ?? '',
+    subtitle: 'Quiz',
+    icon: 'pi pi-book',
+    iconBg: 'dark',
+  },
+}));
 
 
-// deleteQuiz(): void {
-//   const quizId = this.quiz()?._id;
 
-//   if (!quizId) return;
 
-//   this.quizzesService.deleteQuiz(quizId).subscribe({
-//     next: () => {
-//       this.router.navigate(['/dashboard/instructor/quizzes']);
-//     },
-//     error: (error: unknown) => {
-//       console.error('Failed to delete quiz:', error);
-//     },
-//   });
-// }
+deleteQuiz(): void {
+  const quizId = this.quiz()?._id;
+
+  if (!quizId) return;
+
+  this.quizzesService.deleteQuiz(quizId).subscribe({
+    next: () => {
+      this.router.navigate(['/dashboard/instructor/quizzes']);
+    },
+    error: (error: unknown) => {
+      console.error('Failed to delete quiz:', error);
+    },
+  });
+}
 
   editQuiz() {
    const quiz = this.quiz();
