@@ -10,41 +10,6 @@
     padding: 0;
   }
 }
-
-// .delete-confirm-header {
-//   padding: 12px 16px;
-//   border-bottom: 0.5px solid #e5e5e3;
-//   background: #ffffff;
-//   position: relative;
-//   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
-//   border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-//   .delete-confirm-title {
-//     font-size: 16px;
-//     font-weight: 600;
-//     color: #1a1a18;
-//   }
-
-//   .icon-btn {
-//     width: 22px;
-//     height: 22px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background: transparent;
-//     border: none;
-//     color: #0d1321;
-//     transition: color 0.2s ease-in-out;
-//     cursor: pointer;
-//     padding: 0;
-//     &:hover {
-//       color: #6b6b67;
-//     }
-//     i {
-//       font-size: 16px;
-//       font-weight: 600;
-//     }
-//   }
-// }
 .delete-confirm-header {
   padding: 0;
   border-bottom: 0.5px solid #e5e5e3;
@@ -67,7 +32,7 @@
     display: flex;
     align-items: stretch;
     gap: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    border-inline-start: 1px solid rgba(0, 0, 0, 0.3);
   }
 
   .icon-btn {
@@ -78,14 +43,16 @@
     justify-content: center;
     background: transparent;
     border: none;
-    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    border-inline-end: 1px solid rgba(0, 0, 0, 0.3);
     color: #0d1321;
     transition: color 0.2s ease-in-out;
     cursor: pointer;
     padding: 12px 16px;
     &:last-child {
       border-right: none !important;
+      border-left: none !important;
     }
+
     &:hover {
       color: #6b6b67;
     }
