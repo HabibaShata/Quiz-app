@@ -21,4 +21,8 @@ export class QuizzesService {
 getQuizById(id: string): Observable<QuizDetails> {
   return this.http.get<QuizDetails>(`quiz/${id}`);
 }
+
+deleteQuiz(id: string): Observable<void> {
+  return this.http.delete<void>(`quiz/${id}`);
+}
 }

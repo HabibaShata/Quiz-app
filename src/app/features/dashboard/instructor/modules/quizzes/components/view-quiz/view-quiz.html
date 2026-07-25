@@ -60,14 +60,37 @@
 
   </div>
 
-  <div class="actions">
-    <p-button
-      label="Edit"
-      icon="pi pi-pencil"
-      (onClick)="editQuiz()">
-    </p-button>
-  </div>
+  <div class="flex justify-content-end gap-2">
+
+  <!-- Delete -->
+  <!-- <button
+    pButton
+    type="button"
+    icon="pi pi-trash"
+    severity="danger"
+    [text]="true"
+    (click)="openDeleteDialog()">
+  </button> -->
+
+  <!-- Edit -->
+  <button
+    pButton
+    type="button"
+    label="Edit"
+    icon="pi pi-pencil"
+    (click)="editQuiz()">
+  </button>
+
+</div>
 
 </div>
 
 }
+
+
+<!-- <app-delete
+  [visible]="showDeleteDialog()"
+  [config]="deleteConfig()"
+  (visibleChange)="showDeleteDialog.set($event)"
+  (confirmed)="deleteQuiz()">
+</app-delete> -->
