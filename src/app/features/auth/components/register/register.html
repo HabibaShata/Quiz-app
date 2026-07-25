@@ -53,25 +53,28 @@
       </div>
 
       <!-- Role -->
-      <div class="field col-12 custom-role-field">
-        <label for="role" class="form-field__label block mb-2" style="font-weight: 600">
-          {{ 'auth.register.role_label' | translate }}
-        </label>
-        <div class="role-input-wrapper">
-          <i class="pi pi-briefcase role-icon"></i>
-          <p-select
-            id="role"
-            formControlName="role"
-            [options]="roleOptions"
-            optionLabel="label"
-            optionValue="value"
-            placeholder="{{ 'auth.register.role_placeholder' | translate }}"
-            styleClass="custom-role-select w-full"
-          >
-          </p-select>
+      <div class="field col-12">
+        <div class="form-field">
+          <label for="role" class="form-field__label">
+            {{ 'auth.register.role_label' | translate }}
+          </label>
+
+          <div class="role-input-wrapper">
+            <i class="pi pi-briefcase role-icon"></i>
+
+            <p-select
+              id="role"
+              formControlName="role"
+              [options]="roleOptions"
+              optionLabel="label"
+              optionValue="value"
+              placeholder="{{ 'auth.register.role_placeholder' | translate }}"
+              styleClass="custom-role-select w-full"
+            >
+            </p-select>
+          </div>
         </div>
       </div>
-
       <!-- Password -->
       <div class="field col-12">
         <app-form-field
