@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Quiz } from '../interfaces/quiz';
+import { Quiz, QuizDetails } from '../interfaces/quiz';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -16,4 +16,9 @@ export class QuizzesService {
   getLastFiveCompleted(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(`quiz/completed`);
   }
+
+
+getQuizById(id: string): Observable<QuizDetails> {
+  return this.http.get<QuizDetails>(`quiz/${id}`);
+}
 }

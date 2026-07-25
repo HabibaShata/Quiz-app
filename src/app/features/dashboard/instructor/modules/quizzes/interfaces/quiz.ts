@@ -1,3 +1,6 @@
+import { IQuestion } from '../../questions/interfaces/questions';
+
+
 export interface Quiz {
   _id: string;
   title: string;
@@ -24,3 +27,11 @@ export interface GroupInfo {
 }
 export type UpcomingQuiz = Quiz;
 export type CompletedQuiz = Quiz;
+
+
+
+
+
+export interface QuizDetails extends Omit<Quiz, 'questions'> {
+  questions: IQuestion[];
+}

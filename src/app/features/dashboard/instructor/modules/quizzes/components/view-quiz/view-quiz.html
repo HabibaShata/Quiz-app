@@ -1,1 +1,73 @@
-<p>view-quiz works!</p>
+<p-breadcrumb
+  [model]="breadcrumbs"
+  styleClass="!border-none !bg-transparent !p-0 mb-6">
+</p-breadcrumb>
+
+@if (quiz(); as quiz) {
+
+<div class="quiz-card">
+
+  <h2>{{ quiz.title }}</h2>
+
+  <div class="date-row">
+
+    <div class="date-item">
+      <i class="pi pi-calendar"></i>
+      {{ quiz.schadule | date:'dd / MM / yyyy' }}
+    </div>
+
+    <div class="date-item">
+      <i class="pi pi-clock"></i>
+      {{ quiz.schadule | date:'HH : mm' }}
+    </div>
+
+  </div>
+
+  <div class="info-row">
+    <span class="label">Duration</span>
+    <span>{{ quiz.duration }} minutes</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">Number of questions</span>
+    <span>{{ quiz.questions_number }}</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">Score per question</span>
+    <span>{{ quiz.score_per_question }}</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">Difficulty</span>
+    <span>{{ quiz.difficulty }}</span>
+  </div>
+
+  <div class="info-row">
+    <span class="label">Type</span>
+    <span>{{ quiz.type }}</span>
+  </div>
+
+  <div class="description">
+
+    <div class="title">
+      Description
+    </div>
+
+    <p>
+      {{ quiz.description || '-' }}
+    </p>
+
+  </div>
+
+  <div class="actions">
+    <p-button
+      label="Edit"
+      icon="pi pi-pencil"
+      (onClick)="editQuiz()">
+    </p-button>
+  </div>
+
+</div>
+
+}
