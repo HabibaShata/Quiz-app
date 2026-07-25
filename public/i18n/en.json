@@ -266,6 +266,30 @@
     "DATE": "Date",
     "PERSONS": "persons"
   },
+
+
+"quiz_details": {
+  "home": "Home",
+  "quizzes": "Quizzes",
+  "duration": "Duration",
+  "minutes": "minutes",
+  "number_of_questions": "Number of questions",
+  "score_per_question": "Score per question",
+  "difficulty": "Difficulty",
+  "type": "Type",
+  "description": "Description",
+  "delete": "Delete",
+  "edit": "Edit",
+   "difficulty_values": {
+  "easy": "Easy",
+  "medium": "Medium",
+  "hard": "Hard"
+},
+  "delete_title": "Delete Quiz",
+  "delete_confirm_message": "Are you sure you want to delete this quiz?",
+  "delete_warning_note": "This action cannot be undone.",
+  "delete_success": "Quiz deleted successfully."
+},
   "user_profile": {
     "title": "Profile",
     "country": "Country",

@@ -265,6 +265,28 @@
     "DATE": "التاريخ",
     "PERSONS": "أشخاص"
   },
+  "quiz_details": {
+  "home": "الرئيسية",
+  "quizzes": "الاختبارات",
+  "duration": "المدة",
+  "minutes": "دقيقة",
+  "number_of_questions": "عدد الأسئلة",
+  "score_per_question": "درجة السؤال",
+  "difficulty": "مستوى الصعوبة",
+  "type": "النوع",
+  "description": "الوصف",
+  "delete": "حذف",
+  "edit": "تعديل",
+   "difficulty_values": {
+    "easy": "سهل",
+    "medium": "متوسط",
+    "hard": "صعب"
+  },
+  "delete_title": "حذف الاختبار",
+  "delete_confirm_message": "هل أنت متأكد أنك تريد حذف هذا الاختبار؟",
+  "delete_warning_note": "لا يمكن التراجع عن هذا الإجراء.",
+  "delete_success": "تم حذف الاختبار بنجاح."
+},
   "user_profile": {
     "title": "الملف الشخصي",
     "country": "الدولة",
