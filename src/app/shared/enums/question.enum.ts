@@ -4,7 +4,7 @@ export enum QuestionType {
   DO = 'DO',
 }
 
-export enum QuestionDifficultyEnum {
+export enum DifficultyEnum {
   EASY = 'easy',
   MEDIUM = 'medium',
   HARD = 'hard',

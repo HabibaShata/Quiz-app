@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 import { ViewQuestion } from '../view-question/view-question';
 import { Button } from 'primeng/button';
 import { finalize } from 'rxjs';
-import { QuestionDifficultyEnum, QuestionType } from '../../../../../../../shared/enums/question.enum';
+import { DifficultyEnum, QuestionType } from '../../../../../../../shared/enums/question.enum';
 import { Select } from 'primeng/select';
 @Component({
   selector: 'app-questions-list',
@@ -71,9 +71,9 @@ export class QuestionsList {
   ];
 
   questionDifficulty = [
-    { label: 'Easy', value: QuestionDifficultyEnum.EASY },
-    { label: 'Hard', value: QuestionDifficultyEnum.HARD },
-    { label: 'Mediuim', value: QuestionDifficultyEnum.MEDIUM },
+    { label: 'Easy', value: DifficultyEnum.EASY },
+    { label: 'Hard', value: DifficultyEnum.HARD },
+    { label: 'Mediuim', value: DifficultyEnum.MEDIUM },
   ];
 
   ngOnInit(): void {
