@@ -7,7 +7,7 @@ import { GroupOption, IQuiz, IQuizPayload } from '../../interfaces/quiz';
 import { DatePickerModule } from 'primeng/datepicker';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
-import { QuestionDifficulty, QuestionType } from '../../../../../../../shared/enums/question.enum';
+import { DifficultyEnum, QuestionType } from '../../../../../../../shared/enums/question.enum';
 
 @Component({
   selector: 'quiz-app-add-edit-quiz',
@@ -56,7 +56,7 @@ export class AddEditQuiz {
     questions_number: [1, [Validators.required, Validators.min(1)]],
     score_per_question: [1, [Validators.required, Validators.min(1)]],
     schadule: [null as Date | null, [Validators.required]],
-    difficulty: ['' as QuestionDifficulty | '', [Validators.required]],
+    difficulty: ['' as DifficultyEnum | '', [Validators.required]],
     type: ['' as QuestionType | '', [Validators.required]],
     group: ['', [Validators.required]],
   });
@@ -108,7 +108,7 @@ export class AddEditQuiz {
       description: value.description!,
       group: value.group!,
       questions_number: value.questions_number!,
-      difficulty: value.difficulty as QuestionDifficulty,
+      difficulty: value.difficulty as DifficultyEnum,
       type: value.type as QuestionType,
       schadule: value.schadule!,
       duration: value.duration!,

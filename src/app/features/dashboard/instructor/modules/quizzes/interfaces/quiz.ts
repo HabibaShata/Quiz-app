@@ -1,11 +1,8 @@
 import { ApiResponse } from '../../../../../../core/interfaces/api-response.model';
-import { QuestionDifficulty, QuestionType } from '../../../../../../shared/enums/question.enum';
-
-export interface IQuiz {
+import {  DifficultyEnum,QuestionType } from '../../../../../../shared/enums/question.enum';
 import { IQuestion } from '../../questions/interfaces/questions';
 
-
-export interface Quiz {
+export interface IQuiz {
   _id: string;
   title: string;
   code: string;
@@ -19,12 +16,17 @@ export interface Quiz {
   duration: number;
   score_per_question: number;
   type: QuestionType;
-  difficulty: QuestionDifficulty;
+  difficulty: DifficultyEnum;
   createdAt: string;
   updatedAt: string;
   participants: number;
   closed_at?: string;
   __v?: number;
+}
+
+
+export interface QuizDetails extends Omit<IQuiz, 'questions'> {
+  questions: IQuestion[];
 }
 
 export interface GroupInfo {
@@ -37,7 +39,7 @@ export interface IQuizPayload {
   description: string;
   group: string;
   questions_number: number;
-  difficulty: QuestionDifficulty;
+  difficulty: DifficultyEnum;
   type: QuestionType;
   schadule: Date;
   duration: number;
@@ -53,13 +55,9 @@ export interface GroupOption {
 export type IQuizResponse = ApiResponse<IQuiz>;
 export type UpcomingQuiz = IQuiz;
 export type CompletedQuiz = IQuiz;
-export type UpcomingQuiz = Quiz;
-export type CompletedQuiz = Quiz;
 
 
 
 
 
-export interface QuizDetails extends Omit<Quiz, 'questions'> {
-  questions: IQuestion[];
-}
+
