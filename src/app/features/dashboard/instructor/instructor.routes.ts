@@ -30,18 +30,14 @@ export const INSTRUCTOR_ROUTES: Routes = [
     loadChildren: () => import('../instructor/modules/quizzes/quizzes.route').then((r) => r.QUIZZES_ROUTES),
   },
   {
+    path: 'results',
+    loadChildren: () => import('../instructor/modules/results/results.route').then((r) => r.RESULTS_ROUTES),
+  },
+  {
     path: 'questions',
     loadComponent: () =>
       import('../instructor/modules/questions/components/questions-list/questions-list').then(
         (c) => c.QuestionsList,
-      ),
-  },
-  {
-    path: '**',
-    title: 'Page Not Found',
-    loadComponent: () =>
-      import('./../../../shared/components/not-found/not-found.component').then(
-        (m) => m.NotFoundComponent,
       ),
   },
 ];

@@ -29,14 +29,6 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
       active: '/images/groups-icon-white.svg',
     },
   },
-  //  {
-  //   label: 'Questions',
-  //   route: 'instructor/questions',
-  //   icon: {
-  //     default: '/images/groups-icon.svg',
-  //     active: '/images/groups-icon-white.svg',
-  //   },
-  // },
   {
     label: 'Quizzes',
     route: 'instructor/quizzes',
@@ -51,6 +43,14 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
     icon: {
       default: '/images/groups-icon.svg',
       active: '/images/groups-icon-white.svg',
+    },
+  },
+  {
+    label: 'Results',
+    route: 'instructor/results',
+    icon: {
+      default: '/images/Results-icon.svg',
+      active: '/images/Results-icon-white.svg',
     },
   },
 ];
