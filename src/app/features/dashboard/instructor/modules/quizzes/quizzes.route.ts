@@ -15,7 +15,7 @@ export const QUIZZES_ROUTES: Routes = [
         (c) => c.ViewQuiz,
       ),
     data: {
-      title: 'view-quiz',
+      title: 'view Quiz',
     },
   },
   {
@@ -25,7 +25,7 @@ export const QUIZZES_ROUTES: Routes = [
         (c) => c.AddEditQuiz,
       ),
     data: {
-      title: 'Add-quiz',
+      title: 'Add Quiz',
     },
   },
 ];

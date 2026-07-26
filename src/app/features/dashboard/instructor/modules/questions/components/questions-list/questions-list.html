@@ -1,19 +1,24 @@
 <app-page-layout [boxTitle]="'questions.title'" [showButton]="false" [showBoxButton]="true"
   [boxButtonLabel]="'questions.add'" (boxButtonClick)="openAddDialog()" (boxSearch)="onSearch($event)">
   <!-- this is the content fetched from the API -->
-  <!-- <p-select inputId="type" [options]="questionTypes" optionLabel="label" optionValue="value" appendTo="body"
+  <p-select inputId="type" [options]="questionTypes" optionLabel="label" optionValue="value" appendTo="body"
     [showClear]="true" (onChange)="onTypeChange($event.value)"
     placeholder="{{ 'questions.question_form.select_type' | translate }}">
-  </p-select> -->
+  </p-select>
+
+  <p-select inputId="difficulty" [options]="questionDifficulty" optionLabel="label" optionValue="value" appendTo="body"
+    [showClear]="true" (onChange)="onDifficultyChange($event.value)"
+    placeholder="{{ 'questions.question_form.select_type' | translate }}">
+  </p-select>
 
   @if (isLoading()) {
   <app-loader></app-loader>
-  } @else if (filteredQuestions().length === 0) {
+  } @else if (questionsList().length === 0) {
   <app-empty-state [elementName]="'questions.question'"></app-empty-state>
   } @else {
   <!-- Questions Table -->
   <div class="questions-table-wrapper w-full">
-    <p-table [value]="filteredQuestions()" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="questionsList()" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
         <tr>
           <th>{{ 'questions.table.title' | translate }}</th>

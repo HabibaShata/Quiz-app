@@ -13,12 +13,4 @@ export const LEARNER_ROUTES: Routes = [
     path: 'results',
     loadComponent: () => import('./components/results/results').then((c) => c.Results),
   },
-  {
-    path: '**',
-    title: 'Page Not Found',
-    loadComponent: () =>
-      import('./../../../shared/components/not-found/not-found.component').then(
-        (m) => m.NotFoundComponent,
-      ),
-  },
 ];

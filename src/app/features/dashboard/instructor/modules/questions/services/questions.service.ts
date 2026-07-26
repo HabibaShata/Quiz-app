@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { ICreateQuestionData, ICreateQuestionResponse, IDeleteQuestionResponse, IQuestion, IUpdateQuestionResponse } from '../interfaces/questions';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { QuestionType } from '../../../../../../shared/enums/question.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class QuestionsService {
     return this.http.get<IQuestion[]>(`question`)
   }
 
-  getQuestions(difficulty?: string, type?: string): Observable<IQuestion[]> {
+  getQuestions(difficulty?: string, type?: QuestionType | ''): Observable<IQuestion[]> {
+
     let params = new HttpParams();
 
     if (difficulty) {
@@ -24,7 +26,7 @@ export class QuestionsService {
       params = params.set('type', type);
     }
 
-    return this.http.get<IQuestion[]>('question/search', { params });
+    return this.http.post<IQuestion[]>('question/search',{},{ params });
   }
 
   getQuestionDetails(id: string): Observable<IQuestion> {
