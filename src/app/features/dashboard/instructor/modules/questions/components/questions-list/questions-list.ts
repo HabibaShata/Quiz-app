@@ -7,7 +7,7 @@ import { Loader } from '../../../../../../../shared/components/loader/loader';
 import { TableModule } from 'primeng/table';
 import { PageLayout } from '../../../../../../../shared/layouts/page-layout/page-layout';
 import { AddEditQuestion } from '../add-edit-question/add-edit-question';
-import { ICreateQuestionData, IQuestion } from '../../interfaces/questions';
+import { ICreateQuestionData, IQuestion, QuestionDifficulty } from '../../interfaces/questions';
 import { QuestionsService } from '../../services/questions.service';
 import { MessageService } from 'primeng/api';
 import { DeleteConfig } from '../../../../../../../shared/components/delete/interfaces/delete';
@@ -16,8 +16,8 @@ import { DatePipe } from '@angular/common';
 import { ViewQuestion } from '../view-question/view-question';
 import { Button } from 'primeng/button';
 import { finalize } from 'rxjs';
-import { QuestionType } from '../../../../../../../shared/enums/question.enum';
-//import { Select } from 'primeng/select';
+import { DifficultyEnum, QuestionType } from '../../../../../../../shared/enums/question.enum';
+import { Select } from 'primeng/select';
 @Component({
   selector: 'app-questions-list',
   imports: [
@@ -32,6 +32,7 @@ import { QuestionType } from '../../../../../../../shared/enums/question.enum';
     ViewQuestion,
     Button,
     AddEditQuestion,
+    Select
   ],
   templateUrl: './questions-list.html',
   styleUrl: './questions-list.scss',
@@ -45,7 +46,7 @@ export class QuestionsList {
   questionsList = signal<IQuestion[]>([]);
   isLoading = signal<boolean>(true);
   currentPage = signal<number>(1);
-  pageSize = signal<number>(3);
+  pageSize = signal<number>(10);
   totalRecords = signal<number>(0);
   selectedQuestionForEdit = signal<IQuestion | null>(null);
   selectedQuestionForView = signal<IQuestion | null>(null);
@@ -59,27 +60,60 @@ export class QuestionsList {
   deleteConfig = signal<DeleteConfig | null>(null);
   deleteLoading = signal(false);
   searchValue = signal('');
-  selectedType = signal<QuestionType | null>(null);
+  selectedType = signal<QuestionType | ''>('');
+  selectedDifficulty = signal<QuestionDifficulty | ''>('');
   filteredQuestions = signal<IQuestion[]>([]);
 
   questionTypes = [
-    { label: 'FrontEnd', value: QuestionType.FE },
-    { label: 'Backend', value: QuestionType.BE },
-    { label: 'Dev Ops', value: QuestionType.DO },
+    { label: 'FE', value: QuestionType.FE },
+    { label: 'BE', value: QuestionType.BE },
+    { label: 'DO', value: QuestionType.DO },
+  ];
+
+  questionDifficulty = [
+    { label: 'Easy', value: DifficultyEnum.EASY },
+    { label: 'Hard', value: DifficultyEnum.HARD },
+    { label: 'Mediuim', value: DifficultyEnum.MEDIUM },
   ];
 
   ngOnInit(): void {
-    this.fetchQuestionsData();
+    this.fetchQuestionDataFiltered()
+    //this.fetchQuestionsData();
   }
 
-  fetchQuestionsData() {
+  // fetchQuestionsData() {
+  //   this.isLoading.set(true);
+  //   this.questionService.getAllQuestions().subscribe({
+  //     next: (res: IQuestion[]) => {
+  //       this.allQuestions.set(res);
+  //       this.filteredQuestions.set(this.allQuestions())
+  //       this.totalRecords.set(this.filteredQuestions().length);
+  //       this.updateDisplayedQuestions();
+  //       this.isLoading.set(false);
+  //     },
+  //     error: (err) => {
+  //       this.isLoading.set(false);
+  //       this.messageService.add({
+  //         severity: 'error',
+  //         summary: 'Error',
+  //         detail: err.message || this.translate.instant('COMMON.SOMETHING_WENT_WRONG'),
+  //       });
+  //       console.log(err);
+  //     },
+  //   });
+  // }
+
+  // selectedType = single<string>('');
+
+  fetchQuestionDataFiltered() {
     this.isLoading.set(true);
-    this.questionService.getAllQuestions().subscribe({
+    this.questionService.getQuestions(this.selectedDifficulty(), this.selectedType()
+    ).subscribe({
       next: (res: IQuestion[]) => {
         this.allQuestions.set(res);
-        this.filteredQuestions.set(this.allQuestions())
-        this.totalRecords.set(this.filteredQuestions().length);
+       this.totalRecords.set(this.allQuestions().length)
         this.updateDisplayedQuestions();
+          console.log('Total records:', this.totalRecords());
         this.isLoading.set(false);
       },
       error: (err) => {
@@ -92,6 +126,16 @@ export class QuestionsList {
         console.log(err);
       },
     });
+  }
+
+  onTypeChange(type: QuestionType | '') {
+    this.selectedType.set(type);
+    this.fetchQuestionDataFiltered()
+  }
+
+  onDifficultyChange(diffculty: QuestionDifficulty | '') {
+    this.selectedDifficulty.set(diffculty);
+    this.fetchQuestionDataFiltered()
   }
 
   onSearch(value: string): void {
@@ -155,7 +199,8 @@ export class QuestionsList {
     request$.pipe(finalize(() => this.addEditLoad.set(false))).subscribe({
       next: () => {
         this.showDialog = false;
-        this.fetchQuestionsData();
+        this.fetchQuestionDataFiltered();
+        // this.fetchQuestionsData();
         this.messageService.add({
           severity: 'success',
           summary: this.translate.instant('common.success'),
@@ -191,7 +236,7 @@ export class QuestionsList {
       },
       request: () => this.questionService.deleteQuestion(question._id),
       successMessage: this.translate.instant('questions.delete_success'),
-      onSuccess: () => this.fetchQuestionsData(),
+      onSuccess: () => this.fetchQuestionDataFiltered(),
     });
   }
 
@@ -199,12 +244,22 @@ export class QuestionsList {
   private updateDisplayedQuestions() {
     const start = (this.currentPage() - 1) * this.pageSize();
     const end = start + this.pageSize();
-    this.questionsList.set(this.filteredQuestions().slice(start, end));
+    this.questionsList.set(this.allQuestions().slice(start, end));
   }
 
   onPageChange(event: PaginatorState) {
-    this.currentPage.set((event.page ?? 0) + 1);
-    this.pageSize.set(event.rows ?? 10);
-    this.updateDisplayedQuestions();
-  }
+  console.log(event);
+
+  this.currentPage.set((event.page ?? 0) + 1);
+  this.pageSize.set(event.rows ?? 10);
+
+  console.log(this.currentPage(), this.pageSize());
+
+  this.updateDisplayedQuestions();
+}
+  // onPageChange(event: PaginatorState) {
+  //   this.currentPage.set((event.page ?? 0) + 1);
+  //   this.pageSize.set(event.rows ?? 10);
+  //   this.updateDisplayedQuestions();
+  // }
 }

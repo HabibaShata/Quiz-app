@@ -2,6 +2,10 @@ import { ApiResponse } from '../../../../../../core/interfaces/api-response.mode
 import { QuestionDifficulty, QuestionType } from '../../../../../../shared/enums/question.enum';
 
 export interface IQuiz {
+import { IQuestion } from '../../questions/interfaces/questions';
+
+
+export interface Quiz {
   _id: string;
   title: string;
   code: string;
@@ -49,3 +53,13 @@ export interface GroupOption {
 export type IQuizResponse = ApiResponse<IQuiz>;
 export type UpcomingQuiz = IQuiz;
 export type CompletedQuiz = IQuiz;
+export type UpcomingQuiz = Quiz;
+export type CompletedQuiz = Quiz;
+
+
+
+
+
+export interface QuizDetails extends Omit<Quiz, 'questions'> {
+  questions: IQuestion[];
+}

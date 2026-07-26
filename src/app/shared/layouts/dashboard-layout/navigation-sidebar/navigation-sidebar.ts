@@ -53,6 +53,14 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
       active: '/images/groups-icon-white.svg',
     },
   },
+  {
+    label: 'Results',
+    route: 'instructor/results',
+    icon: {
+      default: '/images/Results-icon.svg',
+      active: '/images/Results-icon-white.svg',
+    },
+  },
 ];
 
 export const STUDENT_NAV_ITEMS: NavItem[] = [

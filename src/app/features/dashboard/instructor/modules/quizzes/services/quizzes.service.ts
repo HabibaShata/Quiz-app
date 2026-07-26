@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IQuiz, IQuizPayload, IQuizResponse } from '../interfaces/quiz';
+import { QuizDetails } from '../interfaces/quiz';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -27,4 +28,13 @@ export class QuizzesService {
   updateQuiz(id: string, newQuiz: IQuizPayload): Observable<IQuizResponse> {
     return this.http.put<IQuizResponse>(`quiz/update/${id}`, newQuiz);
   }
+
+
+getQuizById(id: string): Observable<QuizDetails> {
+  return this.http.get<QuizDetails>(`quiz/${id}`);
+}
+
+deleteQuiz(id: string): Observable<void> {
+  return this.http.delete<void>(`quiz/${id}`);
+}
 }

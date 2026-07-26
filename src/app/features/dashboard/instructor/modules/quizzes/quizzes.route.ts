@@ -11,7 +11,7 @@ export const QUIZZES_ROUTES: Routes = [
     path: 'view-quiz/:id',
     loadComponent: () => import('./components/view-quiz/view-quiz').then((c) => c.ViewQuiz),
     data: {
-      title: 'view-quiz',
+      title: 'view Quiz',
     },
   },
   {
@@ -19,7 +19,7 @@ export const QUIZZES_ROUTES: Routes = [
     loadComponent: () =>
       import('./components/add-edit-quiz/add-edit-quiz').then((c) => c.AddEditQuiz),
     data: {
-      title: 'Add-quiz',
+      title: 'Add Quiz',
     },
   },
 ];
