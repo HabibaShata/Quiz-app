@@ -2,12 +2,17 @@
   <div class="flex flex-column lg:flex-row gap-4 align-items-start">
     <div class="flex gap-3 flex-wrap justify-content-center lg:justify-content-start">
       <!-- set up new quiz -->
-      <a class="linker-card no-underline cursor-pointer" [routerLink]="['../add-quiz']">
+      <button
+        type="button"
+        class="linker-card no-underline cursor-pointer"
+        (click)="openAddDialog()"
+      >
         <div class="icon-container mb-2">
           <img src="/images/new quiz icon.svg" alt="Quiz Icon" class="card-icon" />
         </div>
         <span class="card-title">{{ 'QUIZZES.SET_UP_NEW' | translate }}</span>
-      </a>
+      </button>
+
       <!--  question bank -->
       <a class="linker-card no-underline cursor-pointer" [routerLink]="['../questions']">
         <div class="icon-container mb-2">
@@ -134,3 +139,10 @@
   </div>
 </div>
 <p-toast></p-toast>
+<quiz-app-add-edit-quiz
+  [(visible)]="showDialog"
+  [loading]="addEditLoad()"
+  [quizToEdit]="selectedQuizForEdit()"
+  (submitForm)="saveQuiz($event)"
+  [groups]="groupsOptions()"
+/>

@@ -1,0 +1,146 @@
+:host ::ng-deep .quiz-form-dialog {
+  border-radius: 10px;
+  overflow-x: hidden;
+  width: 68rem !important;
+
+  .p-dialog-content {
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+:host ::ng-deep {
+  .p-inputtext {
+    background-color: transparent;
+  }
+
+  .p-multiselect-label.p-placeholder {
+    color: var(--p-multiselect-placeholder-color);
+    height: 100%;
+  }
+  .p-inputnumber-input,
+  .p-datepicker {
+    width: 100% !important;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+}
+.quiz-dialog-header {
+  background: var(--surface-color);
+
+  .quiz-dialog-title {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font-inter-family);
+    color: var(--secondary-color);
+    padding: 0px 40px;
+  }
+
+  .icon-btn-border {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      height: 100%;
+      background-color: #0000004d;
+      position: absolute;
+      top: 0;
+      width: 1px;
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
+  }
+
+  .icon-btn {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--secondary-color);
+    transition: color 0.2s ease-in-out;
+    cursor: pointer;
+    padding: 30px 34px;
+
+    &:hover:not(:disabled) {
+      color: var(--text-secondary-color);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    i {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+.group-dialog-body {
+  padding: 45px 40px 100px;
+}
+
+.input-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--input-border-color);
+  border-radius: 10px;
+  //   overflow: hidden;
+  height: 40px;
+
+  .input-label {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 50px;
+    padding: 0.75rem 1rem;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  input[pInputText] {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+  }
+  &.description {
+    height: 77px !important;
+  }
+}
+
+.p-select {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.select-question {
+  width: fit-content;
+}
+
+.form-field small {
+  display: block;
+  margin-top: 4px;
+}

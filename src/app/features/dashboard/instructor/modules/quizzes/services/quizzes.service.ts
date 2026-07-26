@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Quiz, QuizDetails } from '../interfaces/quiz';
+import { IQuiz, IQuizPayload, IQuizResponse } from '../interfaces/quiz';
+import { QuizDetails } from '../interfaces/quiz';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,12 +10,23 @@ import { HttpClient } from '@angular/common/http';
 export class QuizzesService {
   private http = inject(HttpClient);
 
-  getFirstFiveIncomming(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`quiz/incomming`);
+  getAllQuizzes(): Observable<IQuiz[]> {
+    return this.http.get<IQuiz[]>(`quiz`);
+  }
+  getFirstFiveIncomming(): Observable<IQuiz[]> {
+    return this.http.get<IQuiz[]>(`quiz/incomming`);
   }
 
-  getLastFiveCompleted(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`quiz/completed`);
+  getLastFiveCompleted(): Observable<IQuiz[]> {
+    return this.http.get<IQuiz[]>(`quiz/completed`);
+  }
+
+  createQuiz(newQuiz: IQuizPayload): Observable<IQuizResponse> {
+    return this.http.post<IQuizResponse>(`quiz`, newQuiz);
+  }
+
+  updateQuiz(id: string, newQuiz: IQuizPayload): Observable<IQuizResponse> {
+    return this.http.put<IQuizResponse>(`quiz/update/${id}`, newQuiz);
   }
 
 

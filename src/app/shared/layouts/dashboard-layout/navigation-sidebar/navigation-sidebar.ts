@@ -30,6 +30,14 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
     },
   },
   {
+    label: 'Questions',
+    route: 'instructor/questions',
+    icon: {
+      default: '/images/groups-icon.svg',
+      active: '/images/groups-icon-white.svg',
+    },
+  },
+  {
     label: 'Quizzes',
     route: 'instructor/quizzes',
     icon: {

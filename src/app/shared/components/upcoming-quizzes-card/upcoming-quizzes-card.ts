@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IQuizRespons } from '../../../features/dashboard/instructor/interfaces/shared-instructor.interfaces';
+import { IQuiz } from '../../../features/dashboard/instructor/modules/quizzes/interfaces/quiz';
 export interface QuizSummary {
   id: string;
   title: string;
@@ -17,6 +17,6 @@ export interface QuizSummary {
   styleUrl: './upcoming-quizzes-card.scss',
 })
 export class UpcomingQuizzesCard {
-  quizzes = input.required<IQuizRespons[]>();
+  quiz = input.required<IQuiz>();
   imgSrc = input<string>('/images/quizImage.png');
 }
