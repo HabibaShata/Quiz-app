@@ -14,7 +14,7 @@ export class QuestionsService {
     return this.http.get<IQuestion[]>(`question`)
   }
 
-  getQuestions(difficulty?: string, type?: QuestionType | ''): Observable<IQuestion[]> {
+  getSearchQuestions(difficulty?: string, type?: QuestionType | ''): Observable<IQuestion[]> {
 
     let params = new HttpParams();
 

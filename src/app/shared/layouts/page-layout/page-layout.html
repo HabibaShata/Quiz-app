@@ -19,6 +19,16 @@
 
       @if (showBoxButton) {
       <div class="flex gap-3">
+        <p-select inputId="type" [options]="questionTypes" optionLabel="label" optionValue="value" appendTo="body"
+          [showClear]="true" (onChange)="onTypeChange($event.value)"
+          placeholder="{{ 'questions.question_form.select_type' | translate }}">
+        </p-select>
+
+        <p-select inputId="difficulty" [options]="questionDifficulty" optionLabel="label" optionValue="value"
+          appendTo="body" [showClear]="true" (onChange)="onDifficultyChange($event.value)"
+          placeholder="{{ 'questions.question_form.select_difficulty' | translate }}">
+        </p-select>
+
         <p-iconfield>
           <p-inputicon styleClass="pi pi-search"></p-inputicon>
           <input pInputText type="text" [value]="searchValue()" (input)="onSearch($any($event.target).value)"

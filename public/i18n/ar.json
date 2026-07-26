@@ -197,6 +197,8 @@
     "view": "عرض",
     "edit": "تعديل",
     "delete": "حذف",
+    "create_success": "تمت إضافة السؤال بنجاح.",
+    "update_success": "تم تحديث السؤال بنجاح.",
     "difficulty": {
       "hard": "صعب",
       "medium": "متوسط",
@@ -215,7 +217,7 @@
       "description": "الوصف",
       "answer": "الإجابة الصحيحة",
       "type": "نوع الفئة",
-      "select_type": "اختر نوع السؤال",
+      "select_type": "يكتب",
       "option_a": "أ",
       "option_b": "ب",
       "option_c": " ج",
@@ -232,7 +234,8 @@
         "answer_required": "يرجى اختيار الإجابة الصحيحة.",
         "type_required": "يرجى اختيار نوع السؤال."
       },
-      "dialog_title": "التفاصيل"
+      "dialog_title": "التفاصيل",
+      "select_difficulty": "مستوي الامتحان"
     },
     "description": "وصف السؤال",
     "delete_title": "حذف السؤال",
@@ -282,7 +285,6 @@
     "select_type": "اختر النوع",
     "save": "حفظ",
     "cancel": "إلغاء",
-
     "validation": {
       "title_required": "العنوان مطلوب",
       "title_minlength": "يجب ألا يقل العنوان عن 3 أحرف",

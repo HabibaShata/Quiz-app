@@ -1,6 +1,6 @@
 :host ::ng-deep .p-datatable table {
   border-collapse: separate;
-  border-spacing: 0 10px; /* vertical space between rows */
+  border-spacing: 0 10px;
 }
 
 :host ::ng-deep .p-datatable-thead > tr > th {
@@ -84,7 +84,7 @@
     color: #fb7c19;
 
     &:hover {
-      background: rgba(251, 124, 25, 0.12);
+      background: rgba(75, 73, 71, 0.12);
       color: #fb7c19;
     }
   }

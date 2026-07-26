@@ -197,6 +197,8 @@
     "view": "View",
     "edit": "Edit",
     "delete": "Delete",
+    "create_success": "Question created successfully.",
+    "update_success": "Question updated successfully.",
     "difficulty": {
       "hard": "Hard",
       "medium": "Medium",
@@ -215,7 +217,7 @@
       "description": "Description",
       "answer": "Right Answer",
       "type": "Category Type",
-      "select_type": "Select Question Type",
+      "select_type": "Type",
       "option_a": "A",
       "option_b": "B",
       "option_c": "C",
@@ -232,7 +234,8 @@
         "answer_required": "Please select the correct answer.",
         "type_required": "Please select the question type."
       },
-      "dialog_title": "Details"
+      "dialog_title": "Details",
+      "select_difficulty": "Difficulty"
     },
     "description": "Question Description",
     "delete_title": "Delete Question",
@@ -283,7 +286,6 @@
     "select_type": "Select type",
     "save": "Save",
     "cancel": "Cancel",
-
     "validation": {
       "title_required": "Title is required",
       "title_minlength": "Title must be at least 3 characters",

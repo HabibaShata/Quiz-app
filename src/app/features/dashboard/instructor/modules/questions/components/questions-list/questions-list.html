@@ -1,16 +1,9 @@
 <app-page-layout [boxTitle]="'questions.title'" [showButton]="false" [showBoxButton]="true"
-  [boxButtonLabel]="'questions.add'" (boxButtonClick)="openAddDialog()" (boxSearch)="onSearch($event)">
+  [boxButtonLabel]="'questions.add'" (boxButtonClick)="openAddDialog()"
+  (boxSearch)="onSearch($event)" (typeChange)="onTypeChange($event)"
+  (difficultyChange)="onDifficultyChange($event)">
+
   <!-- this is the content fetched from the API -->
-  <p-select inputId="type" [options]="questionTypes" optionLabel="label" optionValue="value" appendTo="body"
-    [showClear]="true" (onChange)="onTypeChange($event.value)"
-    placeholder="{{ 'questions.question_form.select_type' | translate }}">
-  </p-select>
-
-  <p-select inputId="difficulty" [options]="questionDifficulty" optionLabel="label" optionValue="value" appendTo="body"
-    [showClear]="true" (onChange)="onDifficultyChange($event.value)"
-    placeholder="{{ 'questions.question_form.select_type' | translate }}">
-  </p-select>
-
   @if (isLoading()) {
   <app-loader></app-loader>
   } @else if (questionsList().length === 0) {
@@ -70,8 +63,8 @@
   }
 </app-page-layout>
 
-<app-add-edit-question [(visible)]="showDialog" [loading]="addEditLoad()" [question]="selectedQuestionForEdit()"
+<app-add-edit-question [(visible)]="showDialog" [loading]="addEditLoad()" [question]="selectedQuestion()"
   (submitForm)="saveQuestion($event)" />
-<app-view-question [(visible)]="visible" [loading]="questionLoading()" [selectedQuestion]="selectedQuestionForView()"
+<app-view-question [(visible)]="visible" [loading]="questionLoading()" [selectedQuestion]="selectedQuestion()"
   (onHide)="onHideViewDialog()">
 </app-view-question>
