@@ -14,12 +14,4 @@ export const QUIZZES_ROUTES: Routes = [
       title: 'view Quiz',
     },
   },
-  {
-    path: 'add-quiz',
-    loadComponent: () =>
-      import('./components/add-edit-quiz/add-edit-quiz').then((c) => c.AddEditQuiz),
-    data: {
-      title: 'Add Quiz',
-    },
-  },
 ];
