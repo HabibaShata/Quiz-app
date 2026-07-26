@@ -1,0 +1,17 @@
+<div class="dashboard-widget">
+  <div class="dashboard-widget_header flex align-items-center justify-content-between mb-3">
+    <h3 class="m-0 text-xl font-bold">Upcoming {{ title() }}</h3>
+    <a
+      [routerLink]="actionLink()"
+      class="flex align-items-center gap-2 text-sm text-color-secondary no-underline"
+    >
+      <span>{{ actionLabel() }}</span>
+      <a routerLink="quizzes" class="no-underline">
+        <i class="pi pi-arrow-right dashboard-widget__link-icon"></i
+      ></a>
+    </a>
+  </div>
+  <div class="dashboard-widget_body">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,12 +1,7 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-export interface StudentSummary {
-  id: string;
-  name: string;
-  classRank: string;
-  averageScore: number;
-  avatar: string;
-}
+import { StudentSummary } from '../../../features/dashboard/instructor/components/instructor-home/instructor-home';
+
 @Component({
   selector: 'quiz-app-top-students-card',
   imports: [RouterLink],
@@ -14,5 +9,6 @@ export interface StudentSummary {
   styleUrl: './top-students-card.scss',
 })
 export class TopStudentsCard {
-  students = input.required<StudentSummary[]>();
+  student = input.required<StudentSummary>();
+  studentLink = input.required<string>();
 }
