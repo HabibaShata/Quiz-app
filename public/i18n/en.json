@@ -316,7 +316,11 @@
       "easy": "Easy",
       "medium": "Medium",
       "hard": "Hard"
-    },
+    },"type_values": {
+  "FE": "Frontend",
+  "BE": "Backend",
+  "DO": "DevOps"
+},
     "delete_title": "Delete Quiz",
     "delete_confirm_message": "Are you sure you want to delete this quiz?",
     "delete_warning_note": "This action cannot be undone.",
