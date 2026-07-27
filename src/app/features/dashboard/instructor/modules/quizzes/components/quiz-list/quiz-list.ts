@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
@@ -52,7 +52,25 @@ export class QuizList implements OnInit {
     this.loadGroups();
     // this.loadQuizzes();
   }
+  completedQuizzesWithGroupNames = computed(() => {
+    const groups = this.groupsOptions();
+    return this.completedQuizzes().map((quiz) => ({
+      ...quiz,
+      groupName: this.getGroupName(quiz.group, groups),
+    }));
+  });
 
+  upcomingQuizzesWithGroupNames = computed(() => {
+    const groups = this.groupsOptions();
+    return this.upcomingQuizzes().map((quiz) => ({
+      ...quiz,
+      groupName: this.getGroupName(quiz.group, groups),
+    }));
+  });
+
+  private getGroupName(groupId: string, groups: GroupOption[]): string {
+    return groups.find((g) => g.value === groupId)?.label || '-';
+  }
   getIncomingQuizzes(): void {
     this.quizzesService.getFirstFiveIncomming().subscribe({
       next: (res) => {
@@ -71,9 +89,6 @@ export class QuizList implements OnInit {
   getCompletedQuizzes(): void {
     this.quizzesService.getLastFiveCompleted().subscribe({
       next: (res) => {
-        console.log(res);
-        console.log(res[0].group);
-
         this.completedQuizzes.set(res);
       },
       error: (err) => {
@@ -89,7 +104,6 @@ export class QuizList implements OnInit {
     this.groupsService.getGroupOptions().subscribe({
       next: (options) => {
         this.groupsOptions.set(options);
-        console.log('options', options);
       },
       error: (err) => console.error('Failed to load groups', err),
     });
@@ -116,7 +130,6 @@ export class QuizList implements OnInit {
 
     request$.pipe(finalize(() => this.addEditLoad.set(false))).subscribe({
       next: () => {
-        this.showDialog.set(false);
         this.showDialog.set(false);
         this.getIncomingQuizzes();
         this.getCompletedQuizzes();

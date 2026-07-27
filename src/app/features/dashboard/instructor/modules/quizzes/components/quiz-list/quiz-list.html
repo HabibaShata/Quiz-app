@@ -107,7 +107,7 @@
           </a>
         </div>
 
-        <p-table [value]="completedQuizzes()" styleClass="custom-p-table">
+        <p-table [value]="completedQuizzesWithGroupNames()" styleClass="custom-p-table">
           <ng-template pTemplate="header">
             <tr>
               <th>{{ 'QUIZZES.TITLE' | translate }}</th>
@@ -120,9 +120,9 @@
             <tr>
               <td class="font-semibold text-900">{{ quiz.title }}</td>
               <td>
-                {{ quiz.group?.name || quiz.group }}
+                {{ quiz.groupName }}
               </td>
-              <td>{{ quiz.participants || 0 }} {{ 'QUIZZES.PERSONS' | translate }}</td>
+              <td>{{ quiz.participants }} {{ 'QUIZZES.PERSONS' | translate }}</td>
               <td>{{ quiz.schadule | date: 'dd/MM/yyyy' }}</td>
             </tr>
           </ng-template>
