@@ -47,12 +47,21 @@
     <div class="form-field">
       <div class="input-group">
         <label class="input-label" for="groupStudents">{{ 'groups.students-placeholder' | translate }}</label>
-        <p-multiSelect inputId="groupStudents" appendTo="body" [options]="studentOptions()" formControlName="students"
+        <!-- <p-multiSelect inputId="groupStudents" appendTo="body" [options]="studentOptions()" formControlName="students"
           optionLabel="first_name" optionValue="_id" [filter]="true" filterBy="fullName" display="chip"
           [virtualScroll]="true" [virtualScrollItemSize]="40" [loading]="loadingStudents">
           <ng-template let-student pTemplate="item">
             <span>{{ student.first_name + ' ' + student.last_name }}</span>
           </ng-template>
+        </p-multiSelect> -->
+        <p-multiSelect inputId="groupStudents" appendTo="body" [options]="studentOptions()" formControlName="students"
+          optionLabel="first_name" optionValue="_id" optionDisabled="disabled" [filter]="true" filterBy="fullName"
+          display="chip" [virtualScroll]="true" [virtualScrollItemSize]="40" [loading]="loadingStudents">
+
+          <ng-template pTemplate="item" let-student>
+            <span>{{ student.first_name }} {{ student.last_name }}</span>
+          </ng-template>
+
         </p-multiSelect>
       </div>
 

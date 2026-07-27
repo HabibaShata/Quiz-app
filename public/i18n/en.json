@@ -255,6 +255,18 @@
     },
     "search": "Search questions..."
   },
+  "results": {
+    "title": "Completed Quizzes",
+    "table": {
+      "title": "Quiz Title",
+      "group": "Group",
+      "persons": "No. of Persons",
+      "participants": "Participants",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "view": "View"
+  },
   "QUIZZES": {
     "SET_UP_NEW": "Set up a new quiz",
     "QUESTION_BANK": "Question Bank",
@@ -316,11 +328,12 @@
       "easy": "Easy",
       "medium": "Medium",
       "hard": "Hard"
-    },"type_values": {
-  "FE": "Frontend",
-  "BE": "Backend",
-  "DO": "DevOps"
-},
+    },
+    "type_values": {
+      "FE": "Frontend",
+      "BE": "Backend",
+      "DO": "DevOps"
+    },
     "delete_title": "Delete Quiz",
     "delete_confirm_message": "Are you sure you want to delete this quiz?",
     "delete_warning_note": "This action cannot be undone.",

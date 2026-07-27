@@ -1,6 +1,6 @@
 import { Component, computed, EventEmitter, inject, Input, Output, signal, SimpleChanges } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TranslatePipe} from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DialogModule } from 'primeng/dialog';
 import { IGroupData, IGroupFormData } from '../../interfaces/groups';
 import { StudentsService } from '../../../students/services/students.service';
@@ -35,16 +35,35 @@ export class AddEditGroup {
   filteredStudents = signal<IStudents[]>([]);
   private currentGroup = signal<IGroupData | null>(null);
   loadingStudents = false;
-  //search = '';
 
   // Edit mode: current group members first, then students without a group
   studentOptions = computed(() => {
     const group = this.currentGroup();
-    if (!group) return this.filteredStudents();
-    const members = this.allStudents().filter(s => group.students.includes(s._id));
-    const unassigned = this.filteredStudents().filter(s => !group.students.includes(s._id));
-    return [...members, ...unassigned];
+
+    if (!group) {
+      return this.filteredStudents();
+    }
+
+    const members = this.allStudents().filter(s =>
+      group.students.includes(s._id)
+    );
+
+    const unassigned = this.filteredStudents().filter(s =>
+      !group.students.includes(s._id)
+    );
+
+    return [...members, ...unassigned].map(student => ({
+      ...student,
+      disabled: this.isEditMode && group.students.includes(student._id)
+    }));
   });
+  // studentOptions = computed(() => {
+  //   const group = this.currentGroup();
+  //   if (!group) return this.filteredStudents();
+  //   const members = this.allStudents().filter(s => group.students.includes(s._id));
+  //   const unassigned = this.filteredStudents().filter(s => !group.students.includes(s._id));
+  //   return [...members, ...unassigned];
+  // });
 
   constructor() {
     this.formInit();
@@ -58,11 +77,11 @@ export class AddEditGroup {
   formInit() {
     this.form = this.fb.group({
       students: [[], Validators.required],
-      name: ['',[
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(40),
-        ],],
+      name: ['', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(40),
+      ],],
     });
   }
 

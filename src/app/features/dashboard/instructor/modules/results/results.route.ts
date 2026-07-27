@@ -9,7 +9,7 @@ export const RESULTS_ROUTES: Routes = [
     },
   },
   {
-    path: 'view-quiz/:id',
+    path: ':id',
     loadComponent: () =>
       import('./components/view-result/view-result').then(
         (c) => c.ViewResult,
