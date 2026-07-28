@@ -11,7 +11,7 @@ export const QUIZZES_ROUTES: Routes = [
     path: 'view-quiz/:id',
     loadComponent: () => import('./components/view-quiz/view-quiz').then((c) => c.ViewQuiz),
     data: {
-      title: 'view Quiz',
+      title: 'View Quiz',
     },
   },
 ];
