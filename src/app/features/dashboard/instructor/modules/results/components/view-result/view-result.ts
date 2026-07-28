@@ -6,4 +6,15 @@ import { Component } from '@angular/core';
   templateUrl: './view-result.html',
   styleUrl: './view-result.scss',
 })
-export class ViewResult {}
+export class ViewResult {
+
+  ngOnInit(): void {
+   //id router params
+   //if id call endpoint for results
+   // this.fetchAllresult(id)
+  }
+
+  //fetchAllresult(id){
+  // resultList.find(result => result.id === id)
+  //}
+}
