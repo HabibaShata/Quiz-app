@@ -7,10 +7,10 @@ export const LEARNER_ROUTES: Routes = [
   },
   {
     path: 'quizzes',
-    loadComponent: () => import('./components/quizzes/quizzes').then((c) => c.Quizzes),
+    loadComponent: () => import('./modules/exams/components/exam-stepper/exam-stepper').then((c) => c.ExamStepper),
   },
   {
     path: 'results',
-    loadComponent: () => import('./components/results/results').then((c) => c.Results),
+    loadComponent: () => import('./modules/learner-results/components/learner-resaults-list/learner-resaults-list').then((c) => c.LearnerResaultsList),
   },
 ];
