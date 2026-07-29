@@ -235,7 +235,10 @@
         "type_required": "يرجى اختيار نوع السؤال."
       },
       "dialog_title": "التفاصيل",
-      "select_difficulty": "مستوي الامتحان"
+      "select_difficulty": "مستوي الامتحان",
+      "details": {
+        "correct": "الإجابة الصحيحة"
+      }
     },
     "description": "وصف السؤال",
     "delete_title": "حذف السؤال",
@@ -336,7 +339,12 @@
     "delete_title": "حذف الاختبار",
     "delete_confirm_message": "هل أنت متأكد أنك تريد حذف هذا الاختبار؟",
     "delete_warning_note": "لا يمكن التراجع عن هذا الإجراء.",
-    "delete_success": "تم حذف الاختبار بنجاح."
+    "delete_success": "تم حذف الاختبار بنجاح.",
+    "questionOf": "السؤال {{current}} من {{total}}",
+    "answered": "تمت الإجابة",
+    "selected": "تم الاختيار",
+    "selectToContinue": "اختر إجابة للمتابعة",
+    "submit": "إرسال"
   },
   "user_profile": {
     "title": "الملف الشخصي",
@@ -348,6 +356,8 @@
   "common": {
     "success": "نجاح",
     "error": "خطأ",
+    "back": "رجوع",
+    "next": "التالي",
     "validation": {
       "required": "هذه الخانة مطلوبه"
     },
@@ -360,7 +370,7 @@
   "question": {
     "search": "أسئلة البحث..."
   },
-  "COMMON": {
-    "SOMETHING_WENT_WRONG": "حدث خطأ ما"
+  "quiz-details": {
+    "Success": "تم إرسال إجاباتك بنجاح."
   }
 }

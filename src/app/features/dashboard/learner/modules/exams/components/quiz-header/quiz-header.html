@@ -1,0 +1,35 @@
+<div class="quiz-header">
+  <div class="flex flex-column md:flex-row md:align-items-center md:justify-content-between gap-3">
+
+    <!-- Title + question progress -->
+    <div class="flex-1 min-w-0">
+      <div class="flex align-items-center justify-content-between mb-2">
+        <span
+          class="quiz-title text-lg md:text-xl font-bold text-color white-space-nowrap overflow-hidden text-overflow-ellipsis">
+          {{ quizTitle() }}
+        </span>
+
+        <div>
+          <span class="question-count text-sm font-medium text-color-secondary ml-3 white-space-nowrap">
+            Question {{ currentQuestion() }} / {{ totalQuestions() }}
+          </span>
+          <p-progressBar [value]="questionProgress" [showValue]="false" styleClass="question-progress-bar">
+          </p-progressBar>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer -->
+    <div class="timer-block flex align-items-center gap-3 md:pl-4 md:border-left-1 surface-border">
+      <div class="timer-badge flex align-items-center justify-content-center border-circle flex-shrink-0" [class]="{
+          'severity-success': timerSeverity === 'success',
+          'severity-warning': timerSeverity === 'warning',
+          'severity-danger': timerSeverity === 'danger'
+        }">
+        <i class="pi pi-clock mr-2"></i>
+        <span class="font-bold text-lg">{{ formattedTime }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

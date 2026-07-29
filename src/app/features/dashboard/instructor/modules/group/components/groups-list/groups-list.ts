@@ -71,7 +71,7 @@ export class GroupsList {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: err.message || this.translate.instant('COMMON.SOMETHING_WENT_WRONG'),
+          detail: err.message || this.translate.instant('common.something_went_wrong'),
         });
         console.log(err);
       },

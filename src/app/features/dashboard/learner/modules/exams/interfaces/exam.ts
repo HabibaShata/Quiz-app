@@ -4,7 +4,7 @@ export interface ISubmitData {
   answers: Answer[];
 }
 
-interface Answer {
+export interface Answer {
   question: string;
   answer: string;
 }
@@ -29,7 +29,7 @@ export interface IQuestionResponse{
   data: IQuestionsData;
 }
 
-interface IQuestionsData {
+export interface IQuestionsData {
   _id: string;
   code: string;
   title: string;
@@ -49,7 +49,7 @@ interface IQuestionsData {
   __v: number;
 }
 
-interface IQuizQuestion {
+export interface IQuizQuestion {
   _id: string;
   title: string;
   options: Options;

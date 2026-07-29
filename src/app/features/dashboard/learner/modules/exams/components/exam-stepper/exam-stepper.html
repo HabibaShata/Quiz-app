@@ -1,1 +1,104 @@
-<p>exam-stepper works!</p>
+<div class="card flex flex-column justify-center border-round-xl shadow-2 p-3 md:p-4 ">
+  <app-quiz-header [quizTitle]="quizData().title" [quizTime]="quizTimeInSeconds()" [isQuizStarted]="isQuizStarted()"
+    [currentQuestion]="activeStep()" [totalQuestions]="totalQuestions()" (timeUp)="onTimeUp()" class="block mb-6">
+    <!--(timeChange)="onTimeChange($event)"-->
+  </app-quiz-header>
+
+  <p-stepper [value]="activeStep()" (valueChange)="onStepChange($event)" [linear]="true">
+    <p-step-panels>
+      @for (question of questions(); track question._id; let i = $index; let last = $last) {
+      <p-step-panel [value]="i + 1">
+        <ng-template #content let-activateCallback="activateCallback">
+
+          <!-- <div class="flex align-items-center justify-content-between mb-3">
+            <span class="text-sm text-color-secondary">
+              {{ 'quiz_details.questionOf' | translate: { current: i + 1, total: questions().length } }}
+            </span>
+            <span class="text-sm font-medium text-primary">
+              {{ answeredCount() }}/{{ questions().length }} {{ 'quiz_details.answered' | translate }}
+            </span>
+          </div>
+
+          <div class="w-full border-round-lg surface-200 mb-4 overflow-hidden" style="height: 6px">
+            <div class="h-full bg-primary transition-all transition-duration-300 border-round-lg"
+              [style.width.%]="(answeredCount() / questions().length) * 100">
+            </div>
+          </div> -->
+
+          <div class="flex flex-column min-h-48 question-block">
+
+            <div class="flex align-items-center gap-2 mb-4 question-block--heading">
+              <span
+                class="flex align-items-center  justify-content-center w-2rem h-2rem border-round-lg text-primary-contrast font-bold text-sm flex-shrink-0">
+                {{ i + 1 }}
+              </span>
+              <p class="font-bold text-lg m-0">{{ question.title }}</p>
+            </div>
+
+            <div class="flex flex-column gap-2">
+              @for (key of optionKeys; track key) {
+              <div
+                class="option-row flex align-items-center justify-content-between p-3 border-round border-1 transition-all cursor-pointer"
+                [class]="{
+                'selected-option': isOptionSelected(question._id, key),
+                'normal-option': !isOptionSelected(question._id, key)
+              }" (click)="selectOption(question._id, key)">
+                <div class="flex align-items-center gap-3">
+                  <span
+                    class="option-badge w-2rem h-2rem border-round-lg flex align-items-center justify-content-center font-bold text-sm"
+                    [class]="{
+                    'selected-badge': isOptionSelected(question._id, key),
+                    'normal-badge': !isOptionSelected(question._id, key)
+                  }">
+                    {{ key }}
+                  </span>
+
+                  <span class="text-sm font-medium">
+                    {{ question.options[key] }}
+                  </span>
+                </div>
+
+                @if (isOptionSelected(question._id, key)) {
+                <span class="flex align-items-center gap-1 font-semibold text-xs selected-title">
+                  <i class="pi pi-check-circle text-base"></i>
+                  {{ 'quiz_details.selected' | translate }}
+                </span>
+                }
+              </div>
+              }
+            </div>
+
+            @if (!isAnswered(question._id)) {
+            <p class="text-sm text-color-secondary mt-3 italic">
+              {{ 'quiz_details.selectToContinue' | translate }}
+            </p>
+            }
+          </div>
+
+          <div class="flex align-items-center pt-4" [class.justify-content-between]="i > 0"
+            [class.justify-content-end]="i === 0">
+            @if (i > 0) {
+            <p-button label="{{ 'common.back' | translate }}" severity="secondary" icon="pi pi-arrow-left"
+              (onClick)="activateCallback(i)">
+            </p-button>
+            }
+
+            @if (!last) {
+            <p-button label="{{ 'common.next' | translate }}" icon="pi pi-arrow-right" iconPos="right"
+              styleClass="next-btn" [disabled]="!isAnswered(question._id)" (onClick)="activateCallback(i + 2)">
+            </p-button>
+            } @else {
+            <p-button label="{{ 'quiz.submit' | translate }}" icon="pi pi-check" iconPos="right" severity="success"
+              [disabled]="!isAnswered(question._id)" (onClick)="submitQuiz()">
+            </p-button>
+            }
+          </div>
+        </ng-template>
+      </p-step-panel>
+      }
+    </p-step-panels>
+  </p-stepper>
+</div>
+
+<quiz-app-quiz-success-dialog [result]="20" [totalQuestions]="totalQuestions()" [isPassed]="true"
+  [(visible)]="successDialogVisible" />

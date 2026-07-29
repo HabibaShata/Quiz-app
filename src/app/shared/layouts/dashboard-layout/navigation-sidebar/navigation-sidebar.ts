@@ -74,7 +74,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'Quizzes',
-    route: '/learner/quizzes',
+    route: 'learner/quizzes',
     icon: {
       default: '/images/Quiz-icon.svg',
       active: '/images/Quiz-icon-white.svg',
@@ -82,7 +82,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'Results',
-    route: '/learner/results',
+    route: 'learner/results',
     icon: {
       default: '/images/Results-icon.svg',
       active: '/images/Results-icon-white.svg',
