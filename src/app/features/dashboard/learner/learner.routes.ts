@@ -5,9 +5,9 @@ export const LEARNER_ROUTES: Routes = [
     loadComponent: () =>
       import('./components/learner-home/learner-home').then((c) => c.LearnerHome),
   },
-  {
+   {
     path: 'quizzes',
-    loadComponent: () => import('./modules/exams/components/exam-stepper/exam-stepper').then((c) => c.ExamStepper),
+    loadChildren: () => import('../learner/modules/learner-quiz/learner-quizzes.route').then((r) => r.LEARNER_QUIZZES_ROUTES),
   },
   {
     path: 'results',
