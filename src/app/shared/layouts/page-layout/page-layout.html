@@ -2,22 +2,22 @@
   <!-- Header row: title/description left, action button top-right -->
   <div class="flex justify-content-between align-items-center gap-4 w-full px-6 h-full">
     <div>
-      <h1 class="text-xl font-bold text-900 m-0">{{ title | translate }}</h1>
+      <h1 class="text-xl font-bold text-900 m-0">{{ title() | translate }}</h1>
     </div>
 
-    @if (linkUrl && showButton) {
-    <p-button [routerLink]="linkUrl" [label]="linkLabel | translate" icon="pi pi-plus" styleClass="add-btn" />
-    } @else if (showButton) {
-    <p-button (onClick)="onButtonClick()" [label]="buttonLabel | translate" icon="pi pi-plus" styleClass="add-btn" />
+    @if (linkUrl() && showButton()) {
+    <p-button [routerLink]="linkUrl()" [label]="linkLabel() | translate" icon="pi pi-plus" styleClass="add-btn" />
+    } @else if (showButton()) {
+    <p-button (onClick)="onButtonClick()" [label]="buttonLabel() | translate" icon="pi pi-plus" styleClass="add-btn" />
     }
   </div>
 
   <!-- Bordered box: box title left, optional box button, API content projected below -->
   <div class="border-1 surface-border border-round-lg p-4">
     <div class="flex justify-content-between align-items-center mb-3">
-      <h2 class="layout-title font-semibold text-900 m-0">{{ boxTitle | translate }}</h2>
+      <h2 class="layout-title font-semibold text-900 m-0">{{ boxTitle() | translate }}</h2>
 
-      @if (showBoxButton) {
+      @if (showBoxButton()) {
       <div class="flex gap-3">
         <p-select inputId="type" [options]="questionTypes" optionLabel="label" optionValue="value" appendTo="body"
           [showClear]="true" (onChange)="onTypeChange($event.value)"
@@ -35,7 +35,7 @@
             [placeholder]="'question.search'|translate" />
         </p-iconfield>
 
-        <p-button (onClick)="onBoxButtonClick()" [label]="boxButtonLabel | translate" icon="pi pi-plus"
+        <p-button (onClick)="onBoxButtonClick()" [label]="boxButtonLabel() | translate" icon="pi pi-plus"
           styleClass="add-btn" />
       </div>
       }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, output, Output, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Button } from 'primeng/button';
@@ -16,24 +16,24 @@ import { QuestionType, DifficultyEnum } from '../../enums/question.enum';
   styleUrl: './page-layout.scss',
 })
 export class PageLayout {
-  @Input() title!: string;
-  @Input() showButton = false;
-  @Input() linkUrl?: string;
-  @Input() linkLabel!: string;
-  @Input() buttonLabel!: string;
+  title = input<string>();
+  showButton = input(false);
+  linkUrl = input<string>();
+  linkLabel = input<string>();
+  buttonLabel = input<string>();
 
-  @Input() boxTitle!: string;
-  @Input() showBoxButton = false;
-  @Input() boxLinkUrl?: string;
-  @Input() boxButtonLabel!: string;
+  boxTitle = input<string>();
+  showBoxButton = input(false);
+  boxLinkUrl = input<string>();
+  boxButtonLabel = input<string>();
 
-  @Output() buttonClick = new EventEmitter<void>();
-  @Output() boxButtonClick = new EventEmitter<void>();
+  buttonClick = output<void>();
+  boxButtonClick = output<void>();
 
-  @Output() typeChange = new EventEmitter<QuestionType | ''>();
-  @Output() difficultyChange = new EventEmitter<QuestionDifficulty | ''>();
-  // @Output() boxSearch = new EventEmitter<void>();
+  typeChange = output<QuestionType | ''>();
+  difficultyChange = output<QuestionDifficulty | ''>();
   boxSearch = output<string>();
+
   searchValue = signal('');
 
   selectedType = signal<QuestionType | ''>('');
@@ -48,23 +48,30 @@ export class PageLayout {
 
   questionDifficulty = [
     { label: 'Easy', value: DifficultyEnum.EASY },
+    { label: 'Medium', value: DifficultyEnum.MEDIUM },
     { label: 'Hard', value: DifficultyEnum.HARD },
-    { label: 'Mediuim', value: DifficultyEnum.MEDIUM },
   ];
 
-  onButtonClick() { this.buttonClick.emit(); }
-  onBoxButtonClick() { this.boxButtonClick.emit(); }
+  onButtonClick(): void {
+    this.buttonClick.emit();
+  }
+
+  onBoxButtonClick(): void {
+    this.boxButtonClick.emit();
+  }
 
   onSearch(value: string): void {
     this.searchValue.set(value);
     this.boxSearch.emit(value);
   }
 
-  onTypeChange(type: QuestionType | '') {
+  onTypeChange(type: QuestionType | ''): void {
+    this.selectedType.set(type);
     this.typeChange.emit(type);
   }
 
-  onDifficultyChange(diffculty: QuestionDifficulty | '') {
-    this.difficultyChange.emit(diffculty);
+  onDifficultyChange(difficulty: QuestionDifficulty | ''): void {
+    this.selectedDifficulty.set(difficulty);
+    this.difficultyChange.emit(difficulty);
   }
 }
