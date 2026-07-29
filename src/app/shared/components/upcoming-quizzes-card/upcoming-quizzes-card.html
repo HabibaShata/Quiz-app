@@ -15,11 +15,11 @@
       </div>
 
       <div class="flex align-items-center justify-content-between">
-        <span class="text-sm font-medium"
-          >No. of student's enrolled: {{ quiz().participants }}</span
-        >
+        <span class="text-sm font-medium">
+          No. of student's enrolled: {{ quiz().participants }}
+        </span>
         <a
-          [routerLink]="['view-quiz', quiz()._id]"
+          [routerLink]="['quizzes/view-quiz', quiz()._id]"
           class="quiz-card__open-link flex align-items-center gap-2 text-sm font-bold no-underline"
         >
           <span>Open</span>

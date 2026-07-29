@@ -1,0 +1,69 @@
+<p-dialog [(visible)]="visible" [modal]="true" [draggable]="false" [closable]="false" [style]="{ width: '28rem' }">
+
+<div class="flex flex-column align-items-center text-center gap-4 py-4">
+
+  @if (isPassed()) {
+    <i
+      class="pi pi-check-circle text-green-500"
+      style="font-size: 4rem">
+    </i>
+
+    <h2 class="m-0 text-green-500">
+      Congratulations!
+    </h2>
+
+    <p class="text-600 m-0">
+      You passed the quiz successfully.
+    </p>
+  } @else {
+    <i
+      class="pi pi-times-circle text-red-500"
+      style="font-size: 4rem">
+    </i>
+
+    <h2 class="m-0 text-red-500">
+      Better Luck Next Time
+    </h2>
+
+    <p class="text-600 m-0">
+      Unfortunately, you didn't reach the passing score.
+    </p>
+  }
+
+  <div class="surface-100 border-round-xl px-5 py-4 w-full">
+    <div class="text-700 text-lg font-semibold mb-2">
+      Your Result
+    </div>
+
+    <div class="text-4xl font-bold"
+         [class]="isPassed() ? 'text-green-500' : 'text-red-500'">
+      {{ result() }} / {{ totalQuestions() }}
+    </div>
+  </div>
+
+</div>
+
+
+<!--
+  <div class="flex flex-column align-items-center text-center gap-4 py-4">
+    <i class="pi pi-check-circle text-green-500" style="font-size: 4rem"></i>
+
+    <h2 class="m-0">Quiz Submitted Successfully</h2>
+
+    <p class="text-600 m-0">
+      Your answers have been submitted successfully.
+    </p>
+  </div> -->
+
+  <ng-template #footer>
+    <!-- <p-button severity="success" label="OK" (onClick)="visible.set(false)"></p-button> -->
+      <div class="flex justify-content-center w-full">
+    <p-button
+      label="Done"
+      icon="pi pi-check"
+      (onClick)="visible.set(false)">
+    </p-button>
+  </div>
+  </ng-template>
+</p-dialog>
+

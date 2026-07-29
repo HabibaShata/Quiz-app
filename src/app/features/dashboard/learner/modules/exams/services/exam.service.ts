@@ -7,30 +7,18 @@ import { IJoinQuizRequest, IJoinQuizResponse, IQuestionResponse, ISubmitData, IS
   providedIn: 'root',
 })
 
-
-@Injectable({
-  providedIn: 'root'
-})
-export class QuizService {
+export class ExamService {
   private http = inject(HttpClient);
 
   joinQuiz(data: IJoinQuizRequest): Observable<IJoinQuizResponse> {
-    return this.http.post<IJoinQuizResponse>('quiz/join',data);
+    return this.http.post<IJoinQuizResponse>('quiz/join', data);
   }
 
-  submitQuiz(
-    id: string,
-    data: ISubmitData
-  ): Observable<ISubmitQuizResponse> {
-    return this.http.post<ISubmitQuizResponse>(
-      `quiz/submit/${id}`,
-      data
-    );
+  submitQuiz(id: string, data: ISubmitData): Observable<ISubmitQuizResponse> {
+    return this.http.post<ISubmitQuizResponse>(`quiz/submit/${id}`,data);
   }
 
   getQuestionsWithoutAnswers(id: string): Observable<IQuestionResponse> {
-    return this.http.get<IQuestionResponse>(
-      `quiz/${id}/questions`
-    );
+    return this.http.get<IQuestionResponse>(`quiz/without-answers/${id}`);
   }
 }

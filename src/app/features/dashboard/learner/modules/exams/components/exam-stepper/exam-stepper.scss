@@ -1,0 +1,102 @@
+.question-block--heading {
+  span {
+    background-color: var(--ultra-color);
+  }
+
+  p {
+    font-size: 20px;
+    color: var(--black);
+  }
+}
+
+.option-row {
+  border: 1px solid #c5d86d;
+  transition: all .3s ease-in-out;
+  &:hover{
+    background-color: #abaeaf77;
+  }
+}
+
+.question-icon-wrapper {
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: var(--primary-50, #f0f3ff);
+  border-radius: 50%;
+}
+
+.normal-badge {
+      background-color: #e6ebce;
+    color: #4c4f3c;
+}
+
+.selected-badge {
+  background-color: #c5d86d;
+}
+.selected-option{
+      background: var(--hero-border);
+    border: 1px solid #abaeaf;
+}
+.selected-title{
+  color: #4c4f3c;
+}
+.option-card--selected {
+  border-color: var(--primary-color) !important;
+  background-color: color-mix(in srgb, var(--ultra-color) 8%, transparent);
+}
+
+.option-letter--selected {
+  background-color: var(--ultra-color);
+  border-color: var(--ultra-color);
+  color: var(--ultra-contrast-color);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadein {
+  animation: fadein ease-out;
+}
+
+@keyframes scalein {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scalein {
+  animation: scalein ease-out;
+}
+
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+}
+:host ::ng-deep .next-btn {
+  background: #000 !important;
+  border-color: #000 !important;
+  color: #fff !important;
+}
+
+:host ::ng-deep .next-btn:hover:not(:disabled) {
+  background: #222 !important;
+  border-color: #222 !important;
+}
+
+:host ::ng-deep .next-btn:focus {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) !important;
+}
