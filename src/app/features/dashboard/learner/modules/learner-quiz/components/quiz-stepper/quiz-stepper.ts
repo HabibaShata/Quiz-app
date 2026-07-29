@@ -1,21 +1,21 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { Button } from 'primeng/button';
-import { StepperModule } from 'primeng/stepper';
-import { QuizHeader } from "../quiz-header/quiz-header";
-import { ExamService } from '../../services/exam.service';
-import { IQuestionResponse, IQuestionsData, IQuizQuestion } from '../../interfaces/exam';
+import { Component, computed, inject, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
+import { Button } from 'primeng/button';
+import { StepperModule } from 'primeng/stepper';
 import { QuestionAnswer } from '../../../../../instructor/modules/questions/interfaces/questions';
-import { QuizSuccessDialog } from "../quiz-success-dialog/quiz-success-dialog";
+import { IQuestionsData, IQuizQuestion, IQuestionResponse } from '../../interfaces/exam';
+import { ExamService } from '../../services/exam.service';
+import { QuizHeader } from '../quiz-header/quiz-header';
+import { QuizSuccessDialog } from '../quiz-success-dialog/quiz-success-dialog';
 
 @Component({
-  selector: 'quiz-app-exam-stepper',
+  selector: 'quiz-app-quiz-stepper',
   imports: [Button, StepperModule, QuizHeader, TranslatePipe, QuizSuccessDialog],
-  templateUrl: './exam-stepper.html',
-  styleUrl: './exam-stepper.scss',
+  templateUrl: './quiz-stepper.html',
+  styleUrl: './quiz-stepper.scss',
 })
-export class ExamStepper implements OnInit {
+export class QuizStepper {
   private readonly examService = inject(ExamService)
   private readonly messageService = inject(MessageService);
   private translate = inject(TranslateService);
