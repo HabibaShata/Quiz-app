@@ -22,6 +22,7 @@ export class QuizStepper {
   private translate = inject(TranslateService);
   readonly optionKeys: QuestionAnswer[] = ['A', 'B', 'C', 'D'];
   private route = inject(ActivatedRoute);
+
   quizId!: string | null;
 
   quizData = signal<IQuestionsData>({} as IQuestionsData);
