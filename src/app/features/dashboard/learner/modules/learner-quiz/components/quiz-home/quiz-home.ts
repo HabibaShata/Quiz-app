@@ -82,7 +82,7 @@ export class QuizHome implements OnInit {
 
         this.isJoining.set(false);
         this.closeJoinDialog();
-        this.router.navigate(['/dashboard/learner/exam', res.data.quiz]);
+        this.router.navigate(['/dashboard/learner/quizzes', res.data.quiz]);
       },
       error: (err) => {
         this.isJoining.set(false);

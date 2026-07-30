@@ -14,7 +14,7 @@ export class ExamService {
     return this.http.post<IJoinQuizResponse>('quiz/join', data);
   }
 
-  submitQuiz(id: string, data: ISubmitData): Observable<ISubmitQuizResponse> {
+  submitQuiz(id: string | null, data: ISubmitData): Observable<ISubmitQuizResponse> {
     return this.http.post<ISubmitQuizResponse>(`quiz/submit/${id}`,data);
   }
 

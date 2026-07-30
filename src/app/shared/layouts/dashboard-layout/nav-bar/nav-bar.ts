@@ -18,6 +18,7 @@ import { AddEditQuiz } from '../../../../features/dashboard/instructor/modules/q
 import { TranslateService } from '@ngx-translate/core';
 import { GroupsService } from '../../../../features/dashboard/instructor/modules/group/services/groups.service';
 import { QuizzesService } from '../../../../features/dashboard/instructor/modules/quizzes/services/quizzes.service';
+import { RoleEnum } from '../../../../core/enum/role.enum';
 @Component({
   selector: 'app-nav-bar',
   imports: [
@@ -65,7 +66,9 @@ export class NavBar implements OnInit {
 
       this.pageTitle.set(route.snapshot.data['title'] ?? 'Dashboard');
     });
-    this.loadGroups();
+    if(this.userRole() === RoleEnum.Instructor){
+      this.loadGroups();
+    }
   }
 
   loadGroups() {

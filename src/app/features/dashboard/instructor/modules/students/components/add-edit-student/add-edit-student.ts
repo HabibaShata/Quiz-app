@@ -149,7 +149,7 @@ export class AddEditStudent {
 
     this.groupService.getAllGroups().subscribe({
       next: (res) => {
-        console.log('Groups =>', res);
+      //  console.log('Groups =>', res);
 
         this.groups.set(res);
 
