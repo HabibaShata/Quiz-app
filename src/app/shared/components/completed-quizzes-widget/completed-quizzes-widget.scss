@@ -1,0 +1,65 @@
+.completed-quizzes-box {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.results-link {
+  color: #000000;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+::ng-deep .custom-p-table {
+  .p-datatable-table {
+    border-collapse: separate !important;
+    border-spacing: 3px 6px !important;
+    width: 100%;
+  }
+
+  .p-datatable-thead > tr > th {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border: none !important;
+    border-radius: 4px;
+    text-align: left;
+  }
+
+  .p-datatable-tbody > tr {
+    background-color: #ffffff;
+
+    > td {
+      padding: 8px 12px;
+      font-size: 11px;
+      color: #1e293b;
+      border-top: 1px solid #e2e8f0 !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+      border-right: 1px solid #e2e8f0 !important;
+
+      &:first-child {
+        border-left: 1px solid #e2e8f0 !important;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+    }
+
+    &:hover {
+      > td {
+        background-color: #f8fafc !important;
+      }
+    }
+  }
+}
