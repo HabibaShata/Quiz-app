@@ -6,36 +6,40 @@
     '640px': '95vw'
   }">
 
-  <div class="flex flex-column align-items-center text-center gap-4 py-4">
+  <div class="flex flex-column align-items-center text-center gap-4 py-5 px-3">
 
-    <p class="text-600 m-0">
+    <p class="text-900 font-semibold text-xl m-0">
       {{ 'quiz_details.result.submitted' | translate }}
     </p>
 
     @if (isPassed()) {
-    <i class="pi pi-check-circle text-green-500" style="font-size: 4rem"></i>
+      <div class="flex align-items-center justify-content-center border-circle bg-green-50" style="width: 6rem; height: 6rem;">
+        <i class="pi pi-check-circle text-green-500" style="font-size: 3rem"></i>
+      </div>
 
-    <h2 class="m-0 text-green-500">
-      {{ 'quiz_details.result.congratulations' | translate }}
-    </h2>
+      <h2 class="m-0 text-green-500 font-bold">
+        {{ 'quiz_details.result.congratulations' | translate }}
+      </h2>
 
-    <p class="text-600 m-0">
-      {{ 'quiz_details.result.passed' | translate }}
-    </p>
+      <p class="text-600 m-0">
+        {{ 'quiz_details.result.passed' | translate }}
+      </p>
     } @else {
-    <i class="pi pi-times-circle text-red-500" style="font-size: 4rem"></i>
+      <div class="flex align-items-center justify-content-center border-circle bg-red-50" style="width: 6rem; height: 6rem;">
+        <i class="pi pi-times-circle text-red-500" style="font-size: 3rem"></i>
+      </div>
 
-    <h2 class="m-0 text-red-500">
-      {{ 'quiz_details.result.betterLuck' | translate }}
-    </h2>
+      <h2 class="m-0 text-red-500 font-bold">
+        {{ 'quiz_details.result.betterLuck' | translate }}
+      </h2>
 
-    <p class="text-600 m-0">
-      {{ 'quiz_details.result.failed' | translate }}
-    </p>
+      <p class="text-600 m-0">
+        {{ 'quiz_details.result.failed' | translate }}
+      </p>
     }
 
-    <div class="surface-100 border-round-xl px-5 py-4 w-full">
-      <div class="text-700 text-lg font-semibold mb-2">
+    <div class="surface-100 border-round-xl px-5 py-4 w-full shadow-1">
+      <div class="text-900 text-lg font-semibold mb-2">
         {{ 'quiz_details.result.yourResult' | translate }}
       </div>
 
@@ -47,9 +51,13 @@
   </div>
 
   <ng-template #footer>
-    <div class="flex justify-content-center w-full">
-      <p-button [label]="'common.close' | translate" severity="secondary" icon="pi pi-check"
-        (onClick)="visible.set(false)">
+    <div class="flex justify-content-center w-full pb-2">
+      <p-button
+        [label]="'common.close' | translate"
+        icon="pi pi-check"
+        styleClass="p-button-rounded"
+        [style]="{ backgroundColor: '#000', borderColor: '#000', color: '#fff' }"
+        (onClick)="close()">
       </p-button>
     </div>
   </ng-template>

@@ -1,4 +1,5 @@
-import { Component, input, model } from '@angular/core';
+import { Component, computed, inject, input, model } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Button } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
@@ -10,8 +11,16 @@ import { Dialog } from 'primeng/dialog';
   styleUrl: './quiz-success-dialog.scss',
 })
 export class QuizSuccessDialog {
-  visible = model(false);
+  private router = inject(Router);
+  visible = model(true);
   result = input.required<number>();
   totalResult = input.required<number>();
-  isPassed = input.required<boolean>();
+  isPassed = computed(() => {
+    return (this.result() / this.totalResult()) >= 0.5;
+  });
+
+  close(){
+    this.visible.set(false);
+    this.router.navigate(['/dashboard/learner/quizzes']);
+  }
 }
