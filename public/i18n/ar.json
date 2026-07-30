@@ -251,7 +251,7 @@
       "description": "محتوى السؤال",
       "points": "الدرجات",
       "pts": "درجة",
-      "options": "الخيارات والإجابات",
+      "options": "الخيارات",
       "choices": "خيارات",
       "correct": "الإجابة الصحيحة",
       "no_options": "لا توجد خيارات متاحة لهذا السؤال."
@@ -313,6 +313,11 @@
       "type_required": "نوع الفئة مطلوب",
       "group_required": "المجموعة مطلوبة"
     }
+    , "JOIN_QUIZ": "الانضمام إلى الكويز",
+    "JOIN_CODE_HINT": "أدخل الكود المُستلم للكويز أدناه للانضمام",
+    "CODE": "الكود",
+    "PLEASE_ENTER_CODE": "يرجى إدخال كود الاختبار",
+    "UPCOMING_QUIZZES_TITLE": "{{count}} اختبارات"
   },
   "quiz_details": {
     "home": "الرئيسية",

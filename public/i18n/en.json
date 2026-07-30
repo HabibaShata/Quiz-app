@@ -251,7 +251,7 @@
       "description": "Question Content",
       "points": "Points",
       "pts": "Pts",
-      "options": "Options / Choices",
+      "options": "Choices",
       "choices": "Choices",
       "correct": "Correct Answer",
       "no_options": "No options available for this question."
@@ -314,6 +314,12 @@
       "type_required": "Category type is required",
       "group_required": "Group is required"
     }
+    ,"JOIN_QUIZ": "Join Quiz",
+    "JOIN_CODE_HINT": "Input the code received for the quiz below to join",
+    "CODE": "Code",
+
+    "PLEASE_ENTER_CODE": "Please enter your code",
+    "UPCOMING_QUIZZES_TITLE": "{{count}} Quizzes"
   },
   "quiz": {
     "questionOf": "السؤال {{current}} من {{total}}",

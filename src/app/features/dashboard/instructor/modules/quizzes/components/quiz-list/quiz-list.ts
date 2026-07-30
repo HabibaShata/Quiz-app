@@ -4,7 +4,6 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { RouterLink } from '@angular/router';
-import { EmptyStateComponent } from '../../../../../../../shared/components/empty-state/empty-state.component';
 import { QuizzesService } from '../../services/quizzes.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
@@ -13,6 +12,10 @@ import { GroupOption, IQuiz, IQuizPayload } from '../../interfaces/quiz';
 import { AddEditQuiz } from '../add-edit-quiz/add-edit-quiz';
 import { GroupsService } from '../../../group/services/groups.service';
 import { finalize } from 'rxjs';
+import { CompletedQuizzesWidget } from '../../../../../../../shared/components/completed-quizzes-widget/completed-quizzes-widget';
+import { UpcomingQuizzesCard } from '../../../../../../../shared/components/upcoming-quizzes-card/upcoming-quizzes-card';
+import { Loader } from '../../../../../../../shared/components/loader/loader';
+import { DashboardWidget } from '../../../../../../../shared/components/dashboard-widget/dashboard-widget';
 @Component({
   selector: 'quiz-app-quiz-list',
   imports: [
@@ -21,10 +24,13 @@ import { finalize } from 'rxjs';
     ButtonModule,
     CommonModule,
     RouterLink,
-    EmptyStateComponent,
     Toast,
     TranslatePipe,
     AddEditQuiz,
+    CompletedQuizzesWidget,
+    UpcomingQuizzesCard,
+    Loader,
+    DashboardWidget,
   ],
   providers: [MessageService],
   templateUrl: './quiz-list.html',
@@ -38,7 +44,7 @@ export class QuizList implements OnInit {
 
   upcomingQuizzes = signal<IQuiz[]>([]);
   allQuizzes = signal<IQuiz[]>([]);
-
+  isLoading = signal(true);
   completedQuizzes = signal<IQuiz[]>([]);
   selectedQuizForEdit = signal<IQuiz | null>(null);
   groupsOptions = signal<GroupOption[]>([]);
@@ -60,23 +66,18 @@ export class QuizList implements OnInit {
     }));
   });
 
-  upcomingQuizzesWithGroupNames = computed(() => {
-    const groups = this.groupsOptions();
-    return this.upcomingQuizzes().map((quiz) => ({
-      ...quiz,
-      groupName: this.getGroupName(quiz.group, groups),
-    }));
-  });
-
   private getGroupName(groupId: string, groups: GroupOption[]): string {
     return groups.find((g) => g.value === groupId)?.label || '-';
   }
   getIncomingQuizzes(): void {
+    this.isLoading.set(true);
     this.quizzesService.getFirstFiveIncomming().subscribe({
       next: (res) => {
+        this.isLoading.set(false);
         this.upcomingQuizzes.set(res);
       },
       error: (err) => {
+        this.isLoading.set(false);
         this.messageService.add({
           severity: 'error',
           summary: this.translate.instant('COMMON.ERROR'),
@@ -87,11 +88,14 @@ export class QuizList implements OnInit {
   }
 
   getCompletedQuizzes(): void {
+    this.isLoading.set(true);
     this.quizzesService.getLastFiveCompleted().subscribe({
       next: (res) => {
+        this.isLoading.set(false);
         this.completedQuizzes.set(res);
       },
       error: (err) => {
+        this.isLoading.set(false);
         this.messageService.add({
           severity: 'error',
           summary: this.translate.instant('COMMON.ERROR'),

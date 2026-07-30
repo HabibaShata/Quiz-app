@@ -1,0 +1,53 @@
+<div class="completed-quizzes-box p-3">
+  <div class="flex align-items-center justify-content-between mb-3 mt-2">
+    <h3 class="m-0 text-900 font-bold text-xl">
+      {{ titleKey() | translate }}
+    </h3>
+    <a
+      [routerLink]="resultsLink()"
+      class="results-link text-xs font-bold flex align-items-center gap-1 cursor-pointer no-underline"
+    >
+      <span>{{ 'QUIZZES.RESULTS' | translate }}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+        stroke="#C5D86D"
+        class="w-1rem h-1rem"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+        />
+      </svg>
+    </a>
+  </div>
+
+  <p-table [value]="quizzes()" styleClass="custom-p-table">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'QUIZZES.TITLE' | translate }}</th>
+        <th>{{ 'QUIZZES.GROUP_NAME' | translate }}</th>
+        <th>{{ 'QUIZZES.PERSONS_COUNT' | translate }}</th>
+        <th>{{ 'QUIZZES.DATE' | translate }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-quiz>
+      <tr>
+        <td class="font-semibold text-900">{{ quiz.title }}</td>
+        <td>{{ quiz.groupName }}</td>
+        <td>{{ quiz.participants }} {{ 'QUIZZES.PERSONS' | translate }}</td>
+        <td>{{ quiz.schadule | date: 'dd/MM/yyyy' }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4" class="text-center p-3">
+          <app-empty-state [elementName]="'Completed Quizzes'"></app-empty-state>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
