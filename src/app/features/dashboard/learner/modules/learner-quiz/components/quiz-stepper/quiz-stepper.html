@@ -88,7 +88,7 @@
               styleClass="next-btn" [disabled]="!isAnswered(question._id)" (onClick)="activateCallback(i + 2)">
             </p-button>
             } @else {
-            <p-button label="{{ 'quiz.submit' | translate }}" icon="pi pi-check" iconPos="right" severity="success"
+            <p-button [loading]="isSubmitted()" label="{{ 'quiz_details.submit' | translate }}" icon="pi pi-check" iconPos="right" severity="success"
               [disabled]="!isAnswered(question._id)" (onClick)="submitQuiz()">
             </p-button>
             }
@@ -100,5 +100,5 @@
   </p-stepper>
 </div>
 
-<quiz-app-quiz-success-dialog [result]="20" [totalQuestions]="totalQuestions()" [isPassed]="true"
+<quiz-app-quiz-success-dialog [result]="studentResult()" [totalResult]="totalResult()" [isPassed]="true"
   [(visible)]="successDialogVisible" />

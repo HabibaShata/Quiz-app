@@ -313,8 +313,8 @@
       "difficulty_required": "Difficulty level is required",
       "type_required": "Category type is required",
       "group_required": "Group is required"
-    }
-    ,"JOIN_QUIZ": "Join Quiz",
+    },
+    "JOIN_QUIZ": "Join Quiz",
     "JOIN_CODE_HINT": "Input the code received for the quiz below to join",
     "CODE": "Code",
 
@@ -350,6 +350,14 @@
       "BE": "Backend",
       "DO": "DevOps"
     },
+    "result": {
+      "submitted": "Your answers have been submitted successfully.",
+      "congratulations": "Congratulations!",
+      "passed": "You passed the quiz successfully.",
+      "betterLuck": "Better Luck Next Time",
+      "failed": "Unfortunately, you didn't reach the passing score.",
+      "yourResult": "Your Result"
+    },
     "delete_title": "Delete Quiz",
     "delete_confirm_message": "Are you sure you want to delete this quiz?",
     "delete_warning_note": "This action cannot be undone.",
@@ -369,6 +377,7 @@
   },
   "common": {
     "success": "Success",
+    "close": "Close",
     "error": "Error",
     "back": "Back",
     "next": "Next",
@@ -383,8 +392,5 @@
   },
   "question": {
     "search": "Search questions..."
-  },
-  "quiz-details": {
-    "Success": "Your Answers are Submitted Successfully."
   }
 }

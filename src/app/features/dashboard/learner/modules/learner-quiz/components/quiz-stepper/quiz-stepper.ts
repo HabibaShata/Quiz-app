@@ -8,6 +8,7 @@ import { IQuestionsData, IQuizQuestion, IQuestionResponse } from '../../interfac
 import { ExamService } from '../../services/exam.service';
 import { QuizHeader } from '../quiz-header/quiz-header';
 import { QuizSuccessDialog } from '../quiz-success-dialog/quiz-success-dialog';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'quiz-app-quiz-stepper',
@@ -20,6 +21,8 @@ export class QuizStepper {
   private readonly messageService = inject(MessageService);
   private translate = inject(TranslateService);
   readonly optionKeys: QuestionAnswer[] = ['A', 'B', 'C', 'D'];
+  private route = inject(ActivatedRoute);
+  quizId!: string | null;
 
   quizData = signal<IQuestionsData>({} as IQuestionsData);
   currentQuestionIndex = 0;
@@ -35,22 +38,30 @@ export class QuizStepper {
   isQuizStarted = signal(false);
   quizTimeInSeconds = signal(0); // adjust to your real quiz duration
 
+  isSubmitted = signal(false);
+  totalResult = signal(0);
+  studentResult = signal(0);
+
   totalQuestions = computed(() => this.questions().length);
   answeredCount = computed(
     () => Object.keys(this.selectedAnswers()).length
   );
 
   ngOnInit(): void {
-    this.getQuestionsWithoutAnswers();
+     this.route.paramMap.subscribe(params => {
+      this.quizId = params.get('id');
+      if (this.quizId) {
+        this.getQuestionsWithoutAnswers(this.quizId);
+      }
+    });
   }
 
-  getQuestionsWithoutAnswers(): void {
-    this.examService
-      .getQuestionsWithoutAnswers('6a6a6f2cd7f5a2bf34bdce03')
-      .subscribe({
+  getQuestionsWithoutAnswers(id:string): void {
+    this.examService.getQuestionsWithoutAnswers(id).subscribe({
         next: (res: IQuestionResponse) => {
           this.quizData.set(res.data)
           this.questions.set(this.quizData().questions);
+          this.totalResult.set(this.quizData().questions_number * this.quizData().score_per_question)
           this.quizTimeInSeconds.set(this.quizData().duration * 60)
           this.startQuiz()
         },
@@ -92,15 +103,17 @@ export class QuizStepper {
       question: q._id,
       answer: this.selectedAnswers()[q._id] ?? "",
     }));
-    this.examService.submitQuiz('6a6a6f2cd7f5a2bf34bdce03', { answers: payload }).subscribe({
+    this.isSubmitted.set(true);
+    this.examService.submitQuiz(this.quizId, { answers: payload }).subscribe({
       next: (res) => {
         this.messageService.add({
           severity: 'success',
           summary: this.translate.instant('common.success'),
           detail: res.message || this.translate.instant('quiz-details.Success'),
         });
+        this.studentResult.set(res.data.score)
         this.successDialogVisible.set(true)
-        console.log(res);
+       // console.log(res);
       },
       error: (err) => {
         this.messageService.add({
@@ -108,20 +121,13 @@ export class QuizStepper {
           summary: this.translate.instant('common.error'),
           detail: err.error?.message || this.translate.instant('common.something_went_wrong'),
         });
-        console.log(err)
-      }
+        //console.log(err)
+      },
+      complete : ()=>{this.isSubmitted.set(false)}
     })
-    // console.log('Submitting answers', payload);
   }
 
   startQuiz() {
     this.isQuizStarted.set(true)
   }
-
-  // onTimeChange(secondsLeft: number) {
-  //   // optional: sync with a parent-level state/store
-  //   if (secondsLeft === 0) {
-  //     this.submitQuiz();
-  //   }
-  // }
 }
