@@ -375,6 +375,16 @@
     "role": "Role",
     "status": "Status"
   },
+ "learnerResults": {
+    "title": "Quiz results",
+    "table": {
+      "title": "Title",
+      "participants": "Participants",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "view": "View"
+  },
   "common": {
     "success": "Success",
     "close": "Close",
