@@ -5,12 +5,28 @@ export const LEARNER_ROUTES: Routes = [
     loadComponent: () =>
       import('./components/learner-home/learner-home').then((c) => c.LearnerHome),
   },
-   {
+  {
     path: 'quizzes',
-    loadChildren: () => import('../learner/modules/learner-quiz/learner-quizzes.route').then((r) => r.LEARNER_QUIZZES_ROUTES),
+    loadChildren: () =>
+      import('../learner/modules/learner-quiz/learner-quizzes.route').then(
+        (r) => r.LEARNER_QUIZZES_ROUTES,
+      ),
   },
   {
     path: 'results',
-    loadComponent: () => import('./modules/learner-results/components/learner-resaults-list/learner-resaults-list').then((c) => c.LearnerResaultsList),
+    loadComponent: () =>
+      import('./modules/learner-results/components/learner-resaults-list/learner-resaults-list').then(
+        (c) => c.LearnerResaultsList,
+      ),
+  },
+  {
+    path: 'results/:id',
+    loadComponent: () =>
+      import('../learner/modules/learner-results/components/learner-result-details/learner-result-details').then(
+        (c) => c.LearnerResultDetails,
+      ),
+    data: {
+      title: 'View Result',
+    },
   },
 ];

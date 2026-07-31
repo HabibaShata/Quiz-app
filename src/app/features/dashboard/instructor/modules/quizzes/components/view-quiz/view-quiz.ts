@@ -7,24 +7,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuizDetails } from '../../interfaces/quiz';
 import { ButtonModule } from 'primeng/button';
 import { DatePipe } from '@angular/common';
-import { Delete } from '../../../../../../../shared/components/delete/delete/delete';
-import { DeleteConfig } from '../../../../../../../shared/components/delete/interfaces/delete';
 import { Loader } from '../../../../../../../shared/components/loader/loader';
 import { finalize } from 'rxjs';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { MessageService } from 'primeng/api';
 import { GroupsService } from '../../../group/services/groups.service';
+import { AlertDeleteService } from '../../../../../../../shared/components/delete/services/alert-delete-sevice';
 @Component({
   selector: 'quiz-app-view-quiz',
-  imports: [
-    BreadcrumbModule,
-    CheckboxModule,
-    ButtonModule,
-    DatePipe,
-    Delete,
-    Loader,
-    TranslatePipe,
-  ],
+  imports: [BreadcrumbModule, CheckboxModule, ButtonModule, DatePipe, Loader, TranslatePipe],
   templateUrl: './view-quiz.html',
   styleUrl: './view-quiz.scss',
 })
@@ -34,7 +24,7 @@ export class ViewQuiz {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private translate = inject(TranslateService);
-  private messageService = inject(MessageService);
+  private alertDeleteService = inject(AlertDeleteService);
   quiz = signal<QuizDetails | null>(null);
   groupName = signal('');
 
@@ -95,46 +85,26 @@ export class ViewQuiz {
       });
   }
 
-  openDeleteDialog() {
-    this.showDeleteDialog.set(true);
-  }
+  openDeleteDialog(): void {
+    const currentQuiz = this.quiz();
+    if (!currentQuiz?._id) return;
 
-  deleteConfig = computed<DeleteConfig>(() => ({
-    title: this.translate.instant('quiz_details.delete_title'),
-    confirmMessage: this.translate.instant('quiz_details.delete_confirm_message'),
-    warningNote: this.translate.instant('quiz_details.delete_warning_note'),
-    item: {
-      name: this.quiz()?.title ?? '',
-      subtitle: this.translate.instant('quiz_details.quizzes'),
-      icon: 'pi pi-book',
-      iconBg: 'dark',
-    },
-  }));
-
-  deleteQuiz(): void {
-    const quizId = this.quiz()?._id;
-
-    if (!quizId) return;
-
-    this.quizzesService.deleteQuiz(quizId).subscribe({
-      next: () => {
-        this.messageService.add({
-          severity: 'success',
-          summary: this.translate.instant('common.success'),
-          detail: this.translate.instant('quiz_details.delete_success'),
-        });
-
-        this.router.navigate(['/dashboard/instructor/quizzes']);
+    this.alertDeleteService.open({
+      config: {
+        title: this.translate.instant('quiz_details.delete_title'),
+        confirmMessage: this.translate.instant('quiz_details.delete_confirm_message'),
+        warningNote: this.translate.instant('quiz_details.delete_warning_note'),
+        item: {
+          name: currentQuiz.title,
+          subtitle: this.translate.instant('quiz_details.quizzes'),
+          icon: 'pi pi-book',
+          iconBg: 'dark',
+        },
       },
-
-      error: (error: unknown) => {
-        console.error('Failed to delete quiz:', error);
-
-        this.messageService.add({
-          severity: 'error',
-          summary: this.translate.instant('common.error'),
-          detail: this.translate.instant('common.something_went_wrong'),
-        });
+      request: () => this.quizzesService.deleteQuiz(currentQuiz._id),
+      successMessage: this.translate.instant('quiz_details.delete_success'),
+      onSuccess: () => {
+        this.router.navigate(['/dashboard/instructor/quizzes']);
       },
     });
   }
@@ -152,9 +122,9 @@ export class ViewQuiz {
   }
 
   loadGroupName(groupId: string) {
-  this.groupsService.getAllGroups().subscribe((groups) => {
-    const group = groups.find((g) => g._id === groupId);
-    this.groupName.set(group?.name ?? '');
-  });
-}
+    this.groupsService.getAllGroups().subscribe((groups) => {
+      const group = groups.find((g) => g._id === groupId);
+      this.groupName.set(group?.name ?? '');
+    });
+  }
 }

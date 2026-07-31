@@ -381,11 +381,19 @@
     "title": "Quiz results",
     "table": {
       "title": "Title",
+      "score": "Score",
       "participants": "Participants",
       "date": "Date",
       "actions": "Actions"
     },
     "view": "View"
+  },
+  "result_details": {
+    "results": "Results",
+    "student_name": "Student name",
+    "score": "Score",
+    "average": "Average",
+    "time_submitted": "Time submitted"
   },
   "common": {
     "success": "Success",
