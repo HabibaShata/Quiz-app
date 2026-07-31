@@ -18,5 +18,7 @@ export interface QuizSummary {
 })
 export class UpcomingQuizzesCard {
   quiz = input.required<IQuiz>();
+  routingLink = input<string>('/view-quiz');
+  showRouting = input<boolean>(true)
   imgSrc = input<string>('/images/quizImage.png');
 }

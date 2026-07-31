@@ -6,6 +6,7 @@ import { AuthService } from '../../../../features/auth/services/auth.service';
 export interface NavItem {
   label: string;
   route: string;
+  exact:boolean;
   icon: {
     default: string;
     active: string;
@@ -16,6 +17,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
   {
     label: 'Dashboard',
     route: 'instructor',
+    exact: true,
     icon: {
       default: '/images/dashboard-icon.svg',
       active: '/images/dashboard-icon-white.svg',
@@ -24,6 +26,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
   {
     label: 'Students',
     route: 'instructor/students',
+    exact: false,
     icon: {
       default: '/images/groups-icon.svg',
       active: '/images/groups-icon-white.svg',
@@ -32,6 +35,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
   {
     label: 'Questions',
     route: 'instructor/questions',
+    exact: false,
     icon: {
       default: '/images/groups-icon.svg',
       active: '/images/groups-icon-white.svg',
@@ -40,6 +44,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
   {
     label: 'Quizzes',
     route: 'instructor/quizzes',
+    exact: false,
     icon: {
       default: '/images/Quiz-icon.svg',
       active: '/images/Quiz-icon-white.svg',
@@ -48,6 +53,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
   {
     label: 'Groups',
     route: 'instructor/groups',
+    exact: false,
     icon: {
       default: '/images/groups-icon.svg',
       active: '/images/groups-icon-white.svg',
@@ -56,6 +62,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
   {
     label: 'Results',
     route: 'instructor/results',
+    exact: false,
     icon: {
       default: '/images/Results-icon.svg',
       active: '/images/Results-icon-white.svg',
@@ -66,7 +73,8 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
 export const STUDENT_NAV_ITEMS: NavItem[] = [
   {
     label: 'Dashboard',
-    route: '/dashboard/learner',
+    route: 'learner',
+    exact: true,
     icon: {
       default: '/images/dashboard-icon.svg',
       active: '/images/dashboard-icon-white.svg',
@@ -75,6 +83,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
   {
     label: 'Quizzes',
     route: 'learner/quizzes',
+    exact: false,
     icon: {
       default: '/images/Quiz-icon.svg',
       active: '/images/Quiz-icon-white.svg',
@@ -83,6 +92,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
   {
     label: 'Results',
     route: 'learner/results',
+    exact: false,
     icon: {
       default: '/images/Results-icon.svg',
       active: '/images/Results-icon-white.svg',

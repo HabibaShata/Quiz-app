@@ -7,7 +7,7 @@
       [actionLink]="'/dashboard/instructor/quizzes'" [actionLabel]="'Quiz directory'">
       <div class="flex flex-column gap-3">
         @for (quiz of upcomingQuizzes(); track quiz._id) {
-        <quiz-app-upcoming-quizzes-card [quiz]="quiz"></quiz-app-upcoming-quizzes-card>
+        <quiz-app-upcoming-quizzes-card [routingLink]="'quizzes/view-quiz'" [quiz]="quiz"></quiz-app-upcoming-quizzes-card>
         }
       </div>
     </quiz-app-dashboard-widget>
