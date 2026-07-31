@@ -1,12 +1,12 @@
 import { Component, input, output } from '@angular/core';
 import { Dialog } from 'primeng/dialog';
-import { Avatar } from 'primeng/avatar';
+//import { Avatar } from 'primeng/avatar';
 import { CommonModule } from '@angular/common';
 import { DeleteConfig } from '../interfaces/delete';
 
 @Component({
   selector: 'app-delete',
-  imports: [Dialog, Avatar, CommonModule],
+  imports: [Dialog,  CommonModule],
   templateUrl: './delete.html',
   styleUrl: './delete.scss',
 })

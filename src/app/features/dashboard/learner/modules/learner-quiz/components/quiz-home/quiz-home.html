@@ -1,31 +1,8 @@
 @if (isLoading()) {
 <app-loader></app-loader>
 } @else {
-  <quiz-app-button-linker-card
-    [icon]="'/images/new quiz icon.svg'"
-    [title]="'QUIZZES.JOIN_QUIZ' | translate"
-    (cardClick)="openJoinDialog()"
-  ></quiz-app-button-linker-card>
-  <!-- Join Quiz Dialog -->
-  <p-dialog
-    [(visible)]="displayJoinDialog"
-    [modal]="true"
-    [closable]="false"
-    [draggable]="false"
-    [resizable]="false"
-    styleClass="join-quiz-dialog"
-    [style]="{ width: '650px', height: '410px' }"
-  >
-    <ng-template pTemplate="headless">
-      <div class="join-dialog-content">
-        <h2 class="dialog-title">
-          {{ 'QUIZZES.JOIN_QUIZ' | translate }}
-        </h2>
-
-        <p class="dialog-subtitle">
-          {{ 'QUIZZES.JOIN_CODE_HINT' | translate }}
-        </p>
-
+<quiz-app-button-linker-card [icon]="'/images/new-quiz-icon.svg'" [title]="'QUIZZES.JOIN_QUIZ' | translate"
+  (cardClick)="openJoinDialog()"></quiz-app-button-linker-card>
 <!-- Join Quiz Dialog -->
 <p-dialog [(visible)]="displayJoinDialog" [modal]="true" [closable]="false" [draggable]="false" [resizable]="false"
   styleClass="join-quiz-dialog" [style]="{ width: '650px', height: '410px' }">
@@ -44,15 +21,6 @@
         <input type="text" pInputText [(ngModel)]="quizCode" class="code-input" [disabled]="isJoining()" />
       </div>
 
-  <div class="grid mt-4">
-    <!-- upcoming quizzes -->
-    <div class="col-12 lg:col-6 m">
-      <quiz-app-dashboard-widget
-        [title]="'QUIZZES.UPCOMING_QUIZZES_TITLE' | translate: { count: upcomingQuizzes().length }"
-      >
-        <div class="flex flex-column gap-3">
-          @for (quiz of upcomingQuizzes(); track quiz._id) {
-            <quiz-app-upcoming-quizzes-card [quiz]="quiz"></quiz-app-upcoming-quizzes-card>
       @if (joinError()) {
       <p class="error-message">{{ joinError() }}</p>
       }
@@ -79,7 +47,7 @@
   </ng-template>
 </p-dialog>
 
-<div class="grid">
+<div class="grid mt-4">
   <!-- upcoming quizzes -->
   <div class="col-12 lg:col-6">
     <quiz-app-dashboard-widget
