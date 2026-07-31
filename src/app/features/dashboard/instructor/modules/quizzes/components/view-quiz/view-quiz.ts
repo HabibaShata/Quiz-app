@@ -13,6 +13,7 @@ import { Loader } from '../../../../../../../shared/components/loader/loader';
 import { finalize } from 'rxjs';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
+import { GroupsService } from '../../../group/services/groups.service';
 @Component({
   selector: 'quiz-app-view-quiz',
   imports: [
@@ -29,11 +30,13 @@ import { MessageService } from 'primeng/api';
 })
 export class ViewQuiz {
   private quizzesService = inject(QuizzesService);
+  private groupsService = inject(GroupsService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private translate = inject(TranslateService);
   private messageService = inject(MessageService);
   quiz = signal<QuizDetails | null>(null);
+  groupName = signal('');
 
   isLoading = signal(true);
 
@@ -84,6 +87,7 @@ export class ViewQuiz {
         next: (res) => {
           this.quiz.set(res);
           this.buildBreadcrumbs();
+          this.loadGroupName(res.group);
         },
         error: (error) => {
           console.error('Failed to load quiz:', error);
@@ -146,4 +150,11 @@ export class ViewQuiz {
       },
     });
   }
+
+  loadGroupName(groupId: string) {
+  this.groupsService.getAllGroups().subscribe((groups) => {
+    const group = groups.find((g) => g._id === groupId);
+    this.groupName.set(group?.name ?? '');
+  });
+}
 }
