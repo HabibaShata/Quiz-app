@@ -12,7 +12,6 @@ import { QuestionsService } from '../../services/questions.service';
 import { MessageService } from 'primeng/api';
 import { DeleteConfig } from '../../../../../../../shared/components/delete/interfaces/delete';
 import { AlertDeleteService } from '../../../../../../../shared/components/delete/services/alert-delete-sevice';
-import { DatePipe } from '@angular/common';
 import { ViewQuestion } from '../view-question/view-question';
 import { Button } from 'primeng/button';
 import { finalize } from 'rxjs';
@@ -23,7 +22,6 @@ import { QuestionType } from '../../../../../../../shared/enums/question.enum';
     PageLayout,
     Paginator,
     TranslatePipe,
-    DatePipe,
     Loader,
     FormsModule,
     EmptyStateComponent,

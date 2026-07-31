@@ -1,29 +1,20 @@
+@if(loadingQuestions()){
+  <app-loader></app-loader>
+}
+@else{
 <div class="card flex flex-column justify-center border-round-xl shadow-2 p-3 md:p-4 ">
-  <app-quiz-header [quizTitle]="quizData().title" [quizTime]="quizTimeInSeconds()" [isQuizStarted]="isQuizStarted()"
-    [currentQuestion]="activeStep()" [totalQuestions]="totalQuestions()" (timeUp)="onTimeUp()" class="block mb-6">
-    <!--(timeChange)="onTimeChange($event)"-->
-  </app-quiz-header>
+  <app-quiz-header [quizTitle]="quizData().title" 
+  [quizLevel]="quizData().difficulty" [quizType]="quizData().type"
+    [quizTime]="quizTimeInSeconds()" [isQuizStarted]="isQuizStarted()"
+    [currentQuestion]="activeStep()" 
+    [totalQuestions]="totalQuestions()" (timeUp)="onTimeUp()"
+    (timeChange)="onTimeChange($event)"  class="block mb-6" />
 
-  <p-stepper [value]="activeStep()" (valueChange)="onStepChange($event)" [linear]="true">
+  <p-stepper [value]="activeStep()"  (valueChange)="onStepChange($event)" [linear]="true">
     <p-step-panels>
       @for (question of questions(); track question._id; let i = $index; let last = $last) {
       <p-step-panel [value]="i + 1">
         <ng-template #content let-activateCallback="activateCallback">
-
-          <!-- <div class="flex align-items-center justify-content-between mb-3">
-            <span class="text-sm text-color-secondary">
-              {{ 'quiz_details.questionOf' | translate: { current: i + 1, total: questions().length } }}
-            </span>
-            <span class="text-sm font-medium text-primary">
-              {{ answeredCount() }}/{{ questions().length }} {{ 'quiz_details.answered' | translate }}
-            </span>
-          </div>
-
-          <div class="w-full border-round-lg surface-200 mb-4 overflow-hidden" style="height: 6px">
-            <div class="h-full bg-primary transition-all transition-duration-300 border-round-lg"
-              [style.width.%]="(answeredCount() / questions().length) * 100">
-            </div>
-          </div> -->
 
           <div class="flex flex-column min-h-48 question-block">
 
@@ -69,7 +60,7 @@
             </div>
 
             @if (!isAnswered(question._id)) {
-            <p class="text-sm text-color-secondary mt-3 italic">
+            <p class="text-sm text-red-500 mt-3 italic">
               {{ 'quiz_details.selectToContinue' | translate }}
             </p>
             }
@@ -88,7 +79,7 @@
               styleClass="next-btn" [disabled]="!isAnswered(question._id)" (onClick)="activateCallback(i + 2)">
             </p-button>
             } @else {
-            <p-button [loading]="isSubmitted()" label="{{ 'quiz_details.submit' | translate }}" icon="pi pi-check" iconPos="right" severity="success"
+            <p-button [loading]="isLoading()" label="{{ 'quiz_details.submit' | translate }}" icon="pi pi-check" iconPos="right" severity="success"
               [disabled]="!isAnswered(question._id)" (onClick)="submitQuiz()">
             </p-button>
             }
@@ -99,6 +90,6 @@
     </p-step-panels>
   </p-stepper>
 </div>
-
+}
 <quiz-app-quiz-success-dialog [result]="studentResult()" [totalResult]="totalResult()"
   [(visible)]="successDialogVisible" />
