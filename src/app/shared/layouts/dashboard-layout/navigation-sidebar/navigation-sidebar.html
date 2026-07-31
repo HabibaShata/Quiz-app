@@ -16,7 +16,7 @@
         routerLinkActive="sidebar__nav-item--active"
         [routerLink]="item.route"
         routerLinkActive="sidebar__nav-item--active"
-        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLinkActiveOptions]="{ exact: item.exact }"
         #rla="routerLinkActive"
         [class.sidebar__nav-item--active]="rla.isActive"
       >
