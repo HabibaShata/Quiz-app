@@ -322,6 +322,8 @@
   "quiz_details": {
     "home": "الرئيسية",
     "quizzes": "الاختبارات",
+    "code": "الكود",
+"group": "المجموعة",
     "duration": "المدة",
     "minutes": "دقيقة",
     "number_of_questions": "عدد الأسئلة",

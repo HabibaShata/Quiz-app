@@ -331,6 +331,8 @@
   "quiz_details": {
     "home": "Home",
     "quizzes": "Quizzes",
+    "code": "Code",
+"group": "Group",
     "duration": "Duration",
     "minutes": "minutes",
     "number_of_questions": "Number of questions",
