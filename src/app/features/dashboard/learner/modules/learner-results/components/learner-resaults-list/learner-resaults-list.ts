@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ResultsService } from '../../../../../instructor/modules/results/services/results.service';
 import { PageLayout } from '../../../../../../../shared/layouts/page-layout/page-layout';
 import { Loader } from '../../../../../../../shared/components/loader/loader';
@@ -25,52 +25,24 @@ import { jwtDecode } from 'jwt-decode';
   templateUrl: './learner-resaults-list.html',
   styleUrl: './learner-resaults-list.scss',
 })
-export class LearnerResaultsList {
+export class LearnerResaultsList implements OnInit {
   private resultsService = inject(ResultsService);
-  private authService = inject(AuthService);
 
   allResults = signal<any[]>([]);
   isLoading = signal<boolean>(true);
 
-  currentStudentId = signal<string>(
-    this.authService.getCurrentUser()?._id || this.getStudentIdFromToken(),
-  );
-
   studentResults = computed(() => {
-    const studentId = this.currentStudentId();
-    if (!studentId) return [];
-
-    return this.allResults()
-      .map((quizResult) => {
-        const myParticipantData = quizResult.participants?.find(
-          (p: any) =>
-            p.participant?._id === studentId || p.participant === studentId || p._id === studentId,
-        );
-
-        if (!myParticipantData) return null;
-
-        return {
-          quiz: quizResult.quiz,
-          score: myParticipantData.score,
-          myParticipantData,
-        };
-      })
-      .filter((item) => item !== null);
+    return this.allResults().map((item) => {
+      return {
+        quiz: item.quiz,
+        score: item.result?.score ?? 0,
+        myParticipantData: item.result,
+      };
+    });
   });
 
   ngOnInit(): void {
     this.fetchResults();
-  }
-
-  private getStudentIdFromToken(): string {
-    const token = localStorage.getItem('token');
-    if (!token) return '';
-    try {
-      const decoded: any = jwtDecode(token);
-      return decoded.sub || decoded._id || decoded.userId || '';
-    } catch {
-      return '';
-    }
   }
 
   fetchResults(): void {
@@ -88,32 +60,4 @@ export class LearnerResaultsList {
       },
     });
   }
-  // isLoading = signal<boolean>(false);
-  // resultsList = signal<IResultsResponse[]>([]);
-
-  // ngOnInit(): void {
-  //   this.fetchMyResults();
-  // }
-
-  // fetchMyResults() {
-  //   this.isLoading.set(true);
-  //   const currentUserId = this.authService.getCurrentUser()?._id;
-  //   console.log(currentUserId);
-
-  //   this.resultsService
-  //     .getAllResults()
-  //     .pipe(
-  //       tap((results) => {
-  //         console.log(results);
-  //         const myResults = results.filter((result) =>
-  //           result.participants.some((p: any) => p.participant === currentUserId),
-  //         );
-  //         this.resultsList.set(myResults);
-  //       }),
-  //     )
-  //     .subscribe({
-  //       next: () => this.isLoading.set(false),
-  //       error: () => this.isLoading.set(false),
-  //     });
-  // }
 }

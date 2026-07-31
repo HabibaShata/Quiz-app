@@ -12,9 +12,9 @@ import { Dialog } from 'primeng/dialog';
 import { Router } from '@angular/router';
 import { ExamService } from '../../services/exam.service';
 import { CompletedQuizzesWidget } from '../../../../../../../shared/components/completed-quizzes-widget/completed-quizzes-widget';
+import { ButtonLinkerCard } from '../../../../../../../shared/components/button-linker-card/button-linker-card';
 import { GroupsService } from '../../../../../instructor/modules/group/services/groups.service';
 @Component({
-  selector: 'quiz-app-quiz-home',
   imports: [
     DashboardWidget,
     UpcomingQuizzesCard,
@@ -23,6 +23,8 @@ import { GroupsService } from '../../../../../instructor/modules/group/services/
     TableModule,
     Loader,
     Dialog,
+    CompletedQuizzesWidget,
+    ButtonLinkerCard,
     CompletedQuizzesWidget,
   ],
   templateUrl: './quiz-home.html',

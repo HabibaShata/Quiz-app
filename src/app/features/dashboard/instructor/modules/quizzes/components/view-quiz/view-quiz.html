@@ -19,17 +19,15 @@
       </div>
     </div>
 
-
+    <div class="info-row">
+      <span class="label">{{ 'quiz_details.code' | translate }}</span>
+      <span>{{ quiz.code }}</span>
+    </div>
 
     <div class="info-row">
-  <span class="label">{{ 'quiz_details.code' | translate }}</span>
-  <span>{{ quiz.code }}</span>
-</div>
-
-<div class="info-row">
-  <span class="label">{{ 'quiz_details.group' | translate }}</span>
-  <span>{{ groupName() || '-' }}</span>
-</div>
+      <span class="label">{{ 'quiz_details.group' | translate }}</span>
+      <span>{{ groupName() || '-' }}</span>
+    </div>
 
     <div class="info-row">
       <span class="label">{{ 'quiz_details.duration' | translate }}</span>
@@ -58,7 +56,7 @@
 
     <div class="info-row">
       <span class="label">{{ 'quiz_details.type' | translate }}</span>
-      <span>{{ ('quiz_details.type_values.' + quiz.type) | translate }}</span>
+      <span>{{ 'quiz_details.type_values.' + quiz.type | translate }}</span>
     </div>
 
     <div class="description">
@@ -93,11 +91,3 @@
     </div>
   </div>
 }
-
-<app-delete
-  [visible]="showDeleteDialog()"
-  [config]="deleteConfig()"
-  (visibleChange)="showDeleteDialog.set($event)"
-  (confirmed)="deleteQuiz()"
->
-</app-delete>
