@@ -30,7 +30,14 @@
     padding: 8px 12px;
     border: none !important;
     border-radius: 4px;
-    text-align: left;
+
+    &:lang(en) {
+      text-align: left;
+    }
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .p-datatable-tbody > tr {
@@ -42,17 +49,37 @@
       color: #1e293b;
       border-top: 1px solid #e2e8f0 !important;
       border-bottom: 1px solid #e2e8f0 !important;
-      border-right: 1px solid #e2e8f0 !important;
 
-      &:first-child {
-        border-left: 1px solid #e2e8f0 !important;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
+      // LTR (English): "start" edge is left, "end" edge is right
+      &:lang(en) {
+        border-right: 1px solid #e2e8f0 !important;
+
+        &:first-child {
+          border-left: 1px solid #e2e8f0 !important;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
       }
 
-      &:last-child {
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
+      // RTL (Arabic): "start" edge is right, "end" edge is left
+      &:lang(ar) {
+        border-left: 1px solid #e2e8f0 !important;
+
+        &:first-child {
+          border-right: 1px solid #e2e8f0 !important;
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
+
+        &:last-child {
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+        }
       }
     }
 
