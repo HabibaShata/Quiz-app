@@ -267,7 +267,14 @@
       "date": "التاريخ",
       "actions": "الإجراءات"
     },
-    "view": "عرض"
+    "view": "عرض",
+     "details": "النتائج",
+      "student_name": "اسم الطالب",
+  "score": "الدرجة",
+  "average": "المتوسط",
+  "time_submitted": "وقت التسليم",
+  "no_data": "لا توجد نتائج"
+
   },
   "QUIZZES": {
     "SET_UP_NEW": "إعداد اختبار جديد",
