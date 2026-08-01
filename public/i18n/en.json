@@ -402,6 +402,13 @@
     },
     "view": "View"
   },
+
+  "learnerDashboard": {
+    "welcome": "Welcome back,",
+    "subtitle": "Continue your learning journey and complete your upcoming quizzes.",
+    "ExploreBtn": "Explore Quizzes"
+  }
+,
   "result_details": {
     "results": "Results",
     "student_name": "Student name",
