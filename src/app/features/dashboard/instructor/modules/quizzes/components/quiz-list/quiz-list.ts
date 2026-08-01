@@ -12,12 +12,12 @@ import { GroupOption, IQuiz, IQuizPayload } from '../../interfaces/quiz';
 import { AddEditQuiz } from '../add-edit-quiz/add-edit-quiz';
 import { GroupsService } from '../../../group/services/groups.service';
 import { finalize } from 'rxjs';
-import { CompletedQuizzesWidget } from '../../../../../../../shared/components/completed-quizzes-widget/completed-quizzes-widget';
-import { UpcomingQuizzesCard } from '../../../../../../../shared/components/upcoming-quizzes-card/upcoming-quizzes-card';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
-import { DashboardWidget } from '../../../../../../../shared/components/dashboard-widget/dashboard-widget';
-import { ButtonLinkerCard } from '../../../../../../../shared/components/button-linker-card/button-linker-card';
 import { QuizCodeDialog } from '../quiz-code-dialog/quiz-code-dialog';
+import { CompletedQuizzesWidget } from '../../../../../../../shared/components/dashboard/completed-quizzes-widget/completed-quizzes-widget';
+import { UpcomingQuizzesCard } from '../../../../../../../shared/components/dashboard/upcoming-quizzes-card/upcoming-quizzes-card';
+import { ButtonLinkerCard } from '../../../../../../../shared/components/dashboard/button-linker-card/button-linker-card';
+import { DashboardWidget } from '../../../../../../../shared/components/dashboard/dashboard-widget/dashboard-widget';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
 @Component({
   selector: 'quiz-app-quiz-list',
   imports: [

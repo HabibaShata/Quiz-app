@@ -11,9 +11,9 @@ import { Loader } from '../../../../../../../shared/components/general/loader/lo
 import { finalize } from 'rxjs';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { GroupsService } from '../../../group/services/groups.service';
-import { AlertDeleteService } from '../../../../../../../shared/components/delete/services/alert-delete-sevice';
 import { Toast } from 'primeng/toast';
 import { AddEditQuiz } from '../add-edit-quiz/add-edit-quiz';
+import { AlertDeleteService } from '../../../../../../../shared/components/general/delete/services/alert-delete-sevice';
 @Component({
   selector: 'quiz-app-view-quiz',
   imports: [
