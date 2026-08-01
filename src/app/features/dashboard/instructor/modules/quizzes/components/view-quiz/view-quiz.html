@@ -86,8 +86,23 @@
         [label]="'quiz_details.edit' | translate"
         icon="pi pi-pencil"
         class="edit-btn"
-        (click)="editQuiz()"
+        (click)="openEditDialog()"
       ></button>
     </div>
   </div>
 }
+
+<p-toast></p-toast>
+<quiz-app-add-edit-quiz
+  [(visible)]="showDialog"
+  [loading]="addEditLoad()"
+  [quizToEdit]="selectedQuizForEdit()"
+  (submitForm)="editQuiz($event)"
+  [groups]="groupsOptions()"
+/>
+<!-- <quiz-app-add-edit-quiz
+  [(visible)]="showDialog"
+  [loading]="addEditLoad()"
+  (submitForm)="saveQuiz($event)"
+  [groups]="groupsOptions()"
+/> -->

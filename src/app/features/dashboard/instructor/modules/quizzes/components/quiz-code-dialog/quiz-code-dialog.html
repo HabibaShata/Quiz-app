@@ -1,0 +1,34 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [closable]="false"
+  [style]="{ width: '34rem' }"
+>
+  <div class="success-dialog">
+    <div class="success-icon">
+      <i class="pi pi-check"></i>
+    </div>
+
+    <h2>{{ title() }}</h2>
+
+    <div class="quiz-code">
+      <div class="label">CODE</div>
+
+      <div class="value">
+        {{ code() }}
+      </div>
+
+      <button pButton text (click)="copyCode()">
+        @if (!copied()) {
+          <i class="pi pi-copy"></i>
+        } @else {
+          <i class="pi pi-check"></i>
+        }
+      </button>
+    </div>
+
+    <button pButton label="Close" class="close-btn" (click)="closeDialog()">Close</button>
+  </div>
+</p-dialog>
