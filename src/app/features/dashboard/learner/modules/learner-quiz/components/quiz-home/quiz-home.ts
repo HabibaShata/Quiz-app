@@ -12,8 +12,9 @@ import { Dialog } from 'primeng/dialog';
 import { Router } from '@angular/router';
 import { ExamService } from '../../services/exam.service';
 import { CompletedQuizzesWidget } from '../../../../../../../shared/components/completed-quizzes-widget/completed-quizzes-widget';
+import { ButtonLinkerCard } from '../../../../../../../shared/components/button-linker-card/button-linker-card';
+import { GroupsService } from '../../../../../instructor/modules/group/services/groups.service';
 @Component({
-  selector: 'quiz-app-quiz-home',
   imports: [
     DashboardWidget,
     UpcomingQuizzesCard,
@@ -22,6 +23,8 @@ import { CompletedQuizzesWidget } from '../../../../../../../shared/components/c
     TableModule,
     Loader,
     Dialog,
+    CompletedQuizzesWidget,
+    ButtonLinkerCard,
     CompletedQuizzesWidget,
   ],
   templateUrl: './quiz-home.html',
@@ -33,7 +36,7 @@ export class QuizHome implements OnInit {
   private translate = inject(TranslateService);
   private examService = inject(ExamService);
   private router = inject(Router);
-
+  private groupsService = inject(GroupsService);
   isLoading = signal(true);
   upcomingQuizzes = signal<IQuiz[]>([]);
   completedQuizzes = signal<IQuiz[]>([]);
@@ -44,16 +47,20 @@ export class QuizHome implements OnInit {
   joinError = signal('');
 
   completedQuizzesWithGroupNames = computed(() => {
-    const groups = this.groupsOptions();
-    return this.completedQuizzes().map((quiz) => ({
+    return this.completedQuizzes().map((quiz: any) => ({
       ...quiz,
-      groupName: this.getGroupName(quiz.group, groups),
+      groupName:
+        quiz.group?.name ||
+        quiz.group_name ||
+        (typeof quiz.group === 'string' ? '-' : quiz.group) ||
+        '-',
     }));
   });
   ngOnInit(): void {
     this.loadUpcomingQuizzes();
     this.getCompletedQuizzes();
   }
+
   openJoinDialog() {
     this.displayJoinDialog.set(true);
     this.quizCode.set('');

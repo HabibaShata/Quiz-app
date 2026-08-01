@@ -329,6 +329,8 @@
   "quiz_details": {
     "home": "الرئيسية",
     "quizzes": "الاختبارات",
+    "code": "الكود",
+"group": "المجموعة",
     "duration": "المدة",
     "minutes": "دقيقة",
     "number_of_questions": "عدد الأسئلة",
@@ -372,6 +374,24 @@
     "phone_number": "رقم الهاتف",
     "role": "الدور",
     "status": "الحالة"
+  },
+  "learnerResults": {
+    "title": "نتائج الاختبار",
+    "table": {
+      "title": "العنوان",
+      "score": "النتيجة",
+      "participants": "المشاركون",
+      "date": "التاريخ",
+      "actions": "الإجراءات"
+    },
+    "view": "عرض"
+  },
+  "result_details": {
+    "results": "النتائج",
+    "student_name": "اسم الطالب",
+    "score": "الدرجة",
+    "average": "الدرجة الكلية",
+    "time_submitted": "وقت التسليم"
   },
   "common": {
     "success": "نجاح",

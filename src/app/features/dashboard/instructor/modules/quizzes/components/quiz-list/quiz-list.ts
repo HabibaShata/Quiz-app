@@ -16,6 +16,7 @@ import { CompletedQuizzesWidget } from '../../../../../../../shared/components/c
 import { UpcomingQuizzesCard } from '../../../../../../../shared/components/upcoming-quizzes-card/upcoming-quizzes-card';
 import { Loader } from '../../../../../../../shared/components/loader/loader';
 import { DashboardWidget } from '../../../../../../../shared/components/dashboard-widget/dashboard-widget';
+import { ButtonLinkerCard } from '../../../../../../../shared/components/button-linker-card/button-linker-card';
 @Component({
   selector: 'quiz-app-quiz-list',
   imports: [
@@ -31,6 +32,7 @@ import { DashboardWidget } from '../../../../../../../shared/components/dashboar
     UpcomingQuizzesCard,
     Loader,
     DashboardWidget,
+    ButtonLinkerCard,
   ],
   providers: [MessageService],
   templateUrl: './quiz-list.html',
@@ -43,7 +45,6 @@ export class QuizList implements OnInit {
   private translate = inject(TranslateService);
 
   upcomingQuizzes = signal<IQuiz[]>([]);
-  allQuizzes = signal<IQuiz[]>([]);
   isLoading = signal(true);
   completedQuizzes = signal<IQuiz[]>([]);
   selectedQuizForEdit = signal<IQuiz | null>(null);
@@ -56,7 +57,6 @@ export class QuizList implements OnInit {
     this.getIncomingQuizzes();
     this.getCompletedQuizzes();
     this.loadGroups();
-    // this.loadQuizzes();
   }
   completedQuizzesWithGroupNames = computed(() => {
     const groups = this.groupsOptions();
@@ -155,12 +155,4 @@ export class QuizList implements OnInit {
       },
     });
   }
-  // private loadQuizzes(): void {
-  //   this.quizzesService.getAllQuizzes().subscribe({
-  //     next: (quizzes) => {
-  //       this.allQuizzes.set(quizzes);
-  //     },
-  //     error: (err) => console.error('Failed to load quizzes', err),
-  //   });
-  // }
 }

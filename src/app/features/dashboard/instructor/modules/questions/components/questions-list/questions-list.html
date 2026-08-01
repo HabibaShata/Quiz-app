@@ -17,7 +17,6 @@
           <th>{{ 'questions.table.title' | translate }}</th>
           <th>{{ 'questions.table.description' | translate }}</th>
           <th>{{ 'questions.table.difficulty' | translate }}</th>
-          <th>{{ 'questions.table.date' | translate }}</th>
           <th>{{ 'questions.table.type' | translate }}</th>
           <th class="text-center">{{ 'questions.table.actions' | translate }}</th>
         </tr>
@@ -32,7 +31,6 @@
               {{ 'questions.difficulty.' + question.difficulty | translate }}
             </span>
           </td>
-          <td>{{ (question.createdAt | date: 'dd MMM yyyy') || '-' }}</td>
           <td>{{ question.type}}</td>
           <td>
             <div class="flex align-items-center justify-content-center">

@@ -1,124 +1,67 @@
 @if (isLoading()) {
-  <app-loader></app-loader>
+<app-loader></app-loader>
 } @else {
-  <button
-    type="button"
-    class="linker-card no-underline cursor-pointer mb-4"
-    (click)="openJoinDialog()"
-  >
-    <div class="icon-container mb-2">
-      <img src="/images/new quiz icon.svg" alt="Quiz Icon" class="card-icon" />
-    </div>
-    <span class="card-title">{{ 'QUIZZES.JOIN_QUIZ' | translate }}</span>
-  </button>
+<quiz-app-button-linker-card [icon]="'/images/new-quiz-icon.svg'" [title]="'QUIZZES.JOIN_QUIZ' | translate"
+  (cardClick)="openJoinDialog()"></quiz-app-button-linker-card>
+<!-- Join Quiz Dialog -->
+<p-dialog [(visible)]="displayJoinDialog" [modal]="true" [closable]="false" [draggable]="false" [resizable]="false"
+  styleClass="join-quiz-dialog" [style]="{ width: '650px', height: '410px' }">
+  <ng-template pTemplate="headless">
+    <div class="join-dialog-content">
+      <h2 class="dialog-title">
+        {{ 'QUIZZES.JOIN_QUIZ' | translate }}
+      </h2>
 
-  <!-- Join Quiz Dialog -->
-  <p-dialog
-    [(visible)]="displayJoinDialog"
-    [modal]="true"
-    [closable]="false"
-    [draggable]="false"
-    [resizable]="false"
-    styleClass="join-quiz-dialog"
-    [style]="{ width: '650px', height: '410px' }"
-  >
-    <ng-template pTemplate="headless">
-      <div class="join-dialog-content">
-        <h2 class="dialog-title">
-          {{ 'QUIZZES.JOIN_QUIZ' | translate }}
-        </h2>
+      <p class="dialog-subtitle">
+        {{ 'QUIZZES.JOIN_CODE_HINT' | translate }}
+      </p>
 
-        <p class="dialog-subtitle">
-          {{ 'QUIZZES.JOIN_CODE_HINT' | translate }}
-        </p>
-
-        <div class="code-input-wrapper" [class.error]="joinError()">
-          <span class="code-label">{{ 'QUIZZES.CODE' | translate }}</span>
-          <input
-            type="text"
-            pInputText
-            [(ngModel)]="quizCode"
-            class="code-input"
-            [disabled]="isJoining()"
-          />
-        </div>
-
-        @if (joinError()) {
-          <p class="error-message">{{ joinError() }}</p>
-        }
-
-        <div class="dialog-actions">
-          <button
-            type="button"
-            class="round-btn confirm-btn"
-            [disabled]="isJoining()"
-            (click)="confirmJoin()"
-          >
-            @if (isJoining()) {
-              <span class="mini-spinner"></span>
-            } @else {
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17 5L7.5 14.5L3 10"
-                  stroke="#0D1321"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            }
-          </button>
-          <button
-            type="button"
-            class="round-btn cancel-btn"
-            [disabled]="isJoining()"
-            (click)="closeJoinDialog()"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 5L5 15M5 5L15 15"
-                stroke="#0D1321"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
+      <div class="code-input-wrapper" [class.error]="joinError()">
+        <span class="code-label">{{ 'QUIZZES.CODE' | translate }}</span>
+        <input type="text" pInputText [(ngModel)]="quizCode" class="code-input" [disabled]="isJoining()" />
       </div>
-    </ng-template>
-  </p-dialog>
 
-  <div class="grid">
-    <!-- upcoming quizzes -->
-    <div class="col-12 lg:col-6">
-      <quiz-app-dashboard-widget
-        [title]="'QUIZZES.UPCOMING_QUIZZES_TITLE' | translate: { count: upcomingQuizzes().length }"
-      >
-        <div class="flex flex-column gap-3">
-          @for (quiz of upcomingQuizzes(); track quiz._id) {
-            <quiz-app-upcoming-quizzes-card [quiz]="quiz"></quiz-app-upcoming-quizzes-card>
+      @if (joinError()) {
+      <p class="error-message">{{ joinError() }}</p>
+      }
+
+      <div class="dialog-actions">
+        <button type="button" class="round-btn confirm-btn" [disabled]="isJoining()" (click)="confirmJoin()">
+          @if (isJoining()) {
+          <span class="mini-spinner"></span>
+          } @else {
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 5L7.5 14.5L3 10" stroke="#0D1321" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
           }
-        </div>
-      </quiz-app-dashboard-widget>
+        </button>
+        <button type="button" class="round-btn cancel-btn" [disabled]="isJoining()" (click)="closeJoinDialog()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5L5 15M5 5L15 15" stroke="#0D1321" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
     </div>
+  </ng-template>
+</p-dialog>
 
-    <div class="col-12 lg:col-6">
-      <quiz-app-completed-quizzes-widget
-        [quizzes]="completedQuizzesWithGroupNames()"
-      ></quiz-app-completed-quizzes-widget>
-    </div>
+<div class="grid mt-4">
+  <!-- upcoming quizzes -->
+  <div class="col-12 lg:col-6">
+    <quiz-app-dashboard-widget
+      [title]="'QUIZZES.UPCOMING_QUIZZES_TITLE' | translate: { count: upcomingQuizzes().length }">
+      <div class="flex flex-column gap-3">
+        @for (quiz of upcomingQuizzes(); track quiz._id) {
+        <quiz-app-upcoming-quizzes-card [showRouting]="false" [quiz]="quiz"></quiz-app-upcoming-quizzes-card>
+        }
+      </div>
+    </quiz-app-dashboard-widget>
   </div>
+
+  <div class="col-12 lg:col-6">
+    <quiz-app-completed-quizzes-widget [quizzes]="completedQuizzesWithGroupNames()"></quiz-app-completed-quizzes-widget>
+  </div>
+</div>
 }

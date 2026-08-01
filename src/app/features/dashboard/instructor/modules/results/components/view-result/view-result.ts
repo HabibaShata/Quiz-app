@@ -7,17 +7,18 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Loader } from '../../../../../../../shared/components/loader/loader';
 import { ResultsService } from '../../services/results.service';
 import { IResultsResponse } from '../../interfaces/results';
-import { TableModule } from "primeng/table";
-import { PageLayout } from "../../../../../../../shared/layouts/page-layout/page-layout";
-
+import { TableModule } from 'primeng/table';
+import { PageLayout } from '../../../../../../../shared/layouts/page-layout/page-layout';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'quiz-app-view-result',
-  imports: [BreadcrumbModule, TranslatePipe, Loader, TableModule, PageLayout],
+  imports: [BreadcrumbModule, TranslatePipe, Loader, TableModule, PageLayout, DatePipe],
   templateUrl: './view-result.html',
   styleUrl: './view-result.scss',
 })
-export class ViewResult { private resultsService = inject(ResultsService);
+export class ViewResult {
+  private resultsService = inject(ResultsService);
   private route = inject(ActivatedRoute);
   private translate = inject(TranslateService);
 
@@ -58,22 +59,21 @@ export class ViewResult { private resultsService = inject(ResultsService);
 
     this.resultsService
       .getAllResults()
-      .pipe(
-        finalize(() => this.isLoading.set(false))
-      )
+      .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe({
-        next: (results) => {console.log('route id:', id);
-  console.log('first result:', results[0]);
+        next: (results) => {
+          console.log('route id:', id);
+          console.log('first result:', results[0]);
 
-  const result = results.find(r => r.quiz._id === id);
+          const result = results.find((r) => r.quiz._id === id);
 
-  console.log('matched result:', result);
+          console.log('matched result:', result);
 
-  if (result) {
-    this.result.set(result);
-  console.log('signal value:', this.result());
-  this.buildBreadcrumbs();
-  }
+          if (result) {
+            this.result.set(result);
+            console.log('signal value:', this.result());
+            this.buildBreadcrumbs();
+          }
         },
         error: (err) => {
           console.error(err);
@@ -81,13 +81,3 @@ export class ViewResult { private resultsService = inject(ResultsService);
       });
   }
 }
- // ngOnInit(): void {
-   //id router params
-   //if id call endpoint for results
-   // this.fetchAllresult(id)
-  //}
-
-  //fetchAllresult(id){
-  // resultList.find(result => result.id === id)
-  //}
-
