@@ -1,0 +1,29 @@
+:host ::ng-deep {
+  .action-btn.p-button {
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    transition: all 0.2s ease;
+    background-color: #c5d86d;
+    border-color: #c5d86d;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: #b5ca58;
+      border-color: #b5ca58;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(197, 216, 109, 0.35);
+    }
+  }
+}

@@ -393,6 +393,11 @@
     },
     "view": "عرض"
   },
+  "learnerDashboard": {
+  "welcome": "مرحبًا بعودتك،",
+  "subtitle": "تابع رحلتك التعليمية واستعد لاجتياز اختباراتك القادمة.",
+  "ExploreBtn": "استعرض الاختبارات"
+},
   "result_details": {
     "results": "النتائج",
     "student_name": "اسم الطالب",
