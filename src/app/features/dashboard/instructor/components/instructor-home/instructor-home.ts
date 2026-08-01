@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { TopStudentsCard } from '../../../../../shared/components/top-students-card/top-students-card';
-import { UpcomingQuizzesCard } from '../../../../../shared/components/upcoming-quizzes-card/upcoming-quizzes-card';
-import { Loader } from '../../../../../shared/components/loader/loader';
-import { DashboardWidget } from '../../../../../shared/components/dashboard-widget/dashboard-widget';
+import { TopStudentsCard } from '../../../../../shared/components/dashboard/top-students-card/top-students-card';
+import { UpcomingQuizzesCard } from '../../../../../shared/components/dashboard/upcoming-quizzes-card/upcoming-quizzes-card';
+import { Loader } from '../../../../../shared/components/general/loader/loader';
+import { DashboardWidget } from '../../../../../shared/components/dashboard/dashboard-widget/dashboard-widget';
 import { IQuiz } from '../../modules/quizzes/interfaces/quiz';
 import { QuizzesService } from '../../modules/quizzes/services/quizzes.service';
 export interface StudentSummary {

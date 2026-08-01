@@ -1,9 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { PageLayout } from "../../../../../../../shared/layouts/page-layout/page-layout";
 import { ResultsService } from '../../services/results.service';
-import { Loader } from "../../../../../../../shared/components/loader/loader";
-import { EmptyStateComponent } from "../../../../../../../shared/components/empty-state/empty-state.component";
-import { TranslatePipe,} from '@ngx-translate/core';
+import { Loader } from "../../../../../../../shared/components/general/loader/loader";
+import { EmptyStateComponent } from "../../../../../../../shared/components/general/empty-state/empty-state.component";
+import { TranslatePipe, } from '@ngx-translate/core';
 import { TableModule } from "primeng/table";
 import { DatePipe } from '@angular/common';
 import { RouterLink } from "@angular/router";

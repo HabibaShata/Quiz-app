@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { StudentSummary } from '../../../features/dashboard/instructor/components/instructor-home/instructor-home';
+import { StudentSummary } from '../../../../features/dashboard/instructor/components/instructor-home/instructor-home';
 
 @Component({
   selector: 'quiz-app-top-students-card',

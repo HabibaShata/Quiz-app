@@ -7,10 +7,10 @@ import { QuestionAnswer } from '../../../../../instructor/modules/questions/inte
 import { IQuestionsData, IQuizQuestion, IQuestionResponse } from '../../interfaces/exam';
 import { ExamService } from '../../services/exam.service';
 import { QuizProgressService, IQuizProgress } from '../../services/quiz-progress.service';
-import { QuizHeader } from '../quiz-header/quiz-header';
-import { QuizSuccessDialog } from '../quiz-success-dialog/quiz-success-dialog';
+import { QuizHeader } from '../../../../../../../shared/components/dashboard/learner-quiz/quiz-header/quiz-header';
+import { QuizSuccessDialog } from '../../../../../../../shared/components/dashboard/learner-quiz/quiz-success-dialog/quiz-success-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Loader } from "../../../../../../../shared/components/loader/loader";
+import { Loader } from "../../../../../../../shared/components/general/loader/loader";
 
 @Component({
   selector: 'quiz-app-quiz-stepper',

@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
-import { EmptyStateComponent } from '../empty-state/empty-state.component';
+import { EmptyStateComponent } from '../../general/empty-state/empty-state.component';
 import { TranslatePipe } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { DatePipe } from '@angular/common';
-import { IQuiz } from '../../../features/dashboard/instructor/modules/quizzes/interfaces/quiz';
+import { IQuiz } from '../../../../features/dashboard/instructor/modules/quizzes/interfaces/quiz';
 
 export type CompletedQuizRow = IQuiz & { groupName: string };
 
