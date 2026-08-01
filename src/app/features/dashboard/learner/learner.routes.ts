@@ -7,10 +7,10 @@ export const LEARNER_ROUTES: Routes = [
   },
   {
     path: 'quizzes',
-    loadChildren: () =>
-      import('../learner/modules/learner-quiz/learner-quizzes.route').then(
-        (r) => r.LEARNER_QUIZZES_ROUTES,
-      ),
+    loadComponent: () => import('./modules/learner-quiz/components/quiz-home/quiz-home').then((c) => c.QuizHome),
+    data: {
+      title: 'Quizzez',
+    },
   },
   {
     path: 'results',

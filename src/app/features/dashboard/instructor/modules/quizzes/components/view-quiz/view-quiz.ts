@@ -7,11 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuizDetails } from '../../interfaces/quiz';
 import { ButtonModule } from 'primeng/button';
 import { DatePipe } from '@angular/common';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
 import { finalize } from 'rxjs';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { GroupsService } from '../../../group/services/groups.service';
-import { AlertDeleteService } from '../../../../../../../shared/components/delete/services/alert-delete-sevice';
+import { AlertDeleteService } from '../../../../../../../shared/components/general/delete/services/alert-delete-sevice';
 @Component({
   selector: 'quiz-app-view-quiz',
   imports: [BreadcrumbModule, CheckboxModule, ButtonModule, DatePipe, Loader, TranslatePipe],

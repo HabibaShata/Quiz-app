@@ -2,7 +2,7 @@
   <app-loader></app-loader>
 }
 @else{
-<div class="card flex flex-column justify-center border-round-xl shadow-2 p-3 md:p-4 ">
+<div class="card flex flex-column justify-center border-round-xl shadow-2 p-3 md:p-5 m-2 md:m-5">
   <app-quiz-header [quizTitle]="quizData().title" 
   [quizLevel]="quizData().difficulty" [quizType]="quizData().type"
     [quizTime]="quizTimeInSeconds()" [isQuizStarted]="isQuizStarted()"
@@ -19,8 +19,7 @@
           <div class="flex flex-column min-h-48 question-block">
 
             <div class="flex align-items-center gap-2 mb-4 question-block--heading">
-              <span
-                class="flex align-items-center  justify-content-center w-2rem h-2rem border-round-lg text-primary-contrast font-bold text-sm flex-shrink-0">
+              <span class="flex align-items-center  justify-content-center w-2rem h-2rem border-round-lg text-primary-contrast font-bold text-sm flex-shrink-0">
                 {{ i + 1 }}
               </span>
               <p class="font-bold text-lg m-0">{{ question.title }}</p>

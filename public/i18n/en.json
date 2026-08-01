@@ -96,6 +96,14 @@
       "submit_btn": "Sign Up"
     }
   },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "students": "Students",
+    "questions": "Questions",
+    "quizzes": "Quizzes",
+    "groups": "Groups",
+    "results": "Results"
+  },
   "account": {
     "profile": "Profile",
     "dashboard": "Dashboard",

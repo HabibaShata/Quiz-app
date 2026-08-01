@@ -96,6 +96,14 @@
       "submit_btn": "إنشاء حساب"
     }
   },
+    "navigation": {
+    "dashboard": "الرئيسية",
+    "students": "الطلاب",
+    "questions": "الأسئلة",
+    "quizzes": "الاختبارات",
+    "groups": "المجموعات",
+    "results": "النتائج"
+  },
   "account": {
     "profile": "الملف الشخصي",
     "dashboard": "لوحة التحكم",

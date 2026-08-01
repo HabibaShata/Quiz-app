@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Select } from 'primeng/select';
-import { LanguageService } from '../../../core/services/language.service';
+import { LanguageService } from '../../../../core/services/language.service';
 interface Language {
   label: string;
   value: string;
@@ -10,7 +10,7 @@ interface Language {
 }
 @Component({
   selector: 'app-language-switcher',
-  imports: [ FormsModule, Select,],
+  imports: [FormsModule, Select,],
   templateUrl: './language-switcher.component.html',
   styleUrl: './language-switcher.component.scss',
 })

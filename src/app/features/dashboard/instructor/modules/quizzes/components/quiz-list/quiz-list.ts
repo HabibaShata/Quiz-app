@@ -12,11 +12,11 @@ import { GroupOption, IQuiz, IQuizPayload } from '../../interfaces/quiz';
 import { AddEditQuiz } from '../add-edit-quiz/add-edit-quiz';
 import { GroupsService } from '../../../group/services/groups.service';
 import { finalize } from 'rxjs';
-import { CompletedQuizzesWidget } from '../../../../../../../shared/components/completed-quizzes-widget/completed-quizzes-widget';
-import { UpcomingQuizzesCard } from '../../../../../../../shared/components/upcoming-quizzes-card/upcoming-quizzes-card';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
-import { DashboardWidget } from '../../../../../../../shared/components/dashboard-widget/dashboard-widget';
-import { ButtonLinkerCard } from '../../../../../../../shared/components/button-linker-card/button-linker-card';
+import { CompletedQuizzesWidget } from '../../../../../../../shared/components/dashboard/completed-quizzes-widget/completed-quizzes-widget';
+import { UpcomingQuizzesCard } from '../../../../../../../shared/components/dashboard/upcoming-quizzes-card/upcoming-quizzes-card';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
+import { DashboardWidget } from '../../../../../../../shared/components/dashboard/dashboard-widget/dashboard-widget';
+import { ButtonLinkerCard } from '../../../../../../../shared/components/dashboard/button-linker-card/button-linker-card';
 @Component({
   selector: 'quiz-app-quiz-list',
   imports: [
@@ -80,7 +80,7 @@ export class QuizList implements OnInit {
         this.isLoading.set(false);
         this.messageService.add({
           severity: 'error',
-          summary: this.translate.instant('COMMON.ERROR'),
+          summary: this.translate.instant('common.error'),
           detail: err?.error?.message || 'Failed to load upcoming quizzes',
         });
       },
@@ -98,7 +98,7 @@ export class QuizList implements OnInit {
         this.isLoading.set(false);
         this.messageService.add({
           severity: 'error',
-          summary: this.translate.instant('COMMON.ERROR'),
+          summary: this.translate.instant('common.error'),
           detail: err?.error?.message || 'Failed to load completed quizzes',
         });
       },

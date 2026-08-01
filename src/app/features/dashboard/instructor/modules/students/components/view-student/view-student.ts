@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { IStudents } from '../../interfaces/students';
 import { TranslatePipe } from '@ngx-translate/core';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
 import { AvatarModule } from 'primeng/avatar';
 import { Tag } from 'primeng/tag';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';

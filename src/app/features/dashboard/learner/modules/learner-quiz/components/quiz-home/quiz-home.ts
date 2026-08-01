@@ -1,18 +1,18 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { DashboardWidget } from '../../../../../../../shared/components/dashboard-widget/dashboard-widget';
+import { DashboardWidget } from '../../../../../../../shared/components/dashboard/dashboard-widget/dashboard-widget';
 import { QuizzesService } from '../../../../../instructor/modules/quizzes/services/quizzes.service';
 import { GroupOption, IQuiz } from '../../../../../instructor/modules/quizzes/interfaces/quiz';
-import { UpcomingQuizzesCard } from '../../../../../../../shared/components/upcoming-quizzes-card/upcoming-quizzes-card';
+import { UpcomingQuizzesCard } from '../../../../../../../shared/components/dashboard/upcoming-quizzes-card/upcoming-quizzes-card';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { MessageService } from 'primeng/api';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
 import { Dialog } from 'primeng/dialog';
 import { Router } from '@angular/router';
 import { ExamService } from '../../services/exam.service';
-import { CompletedQuizzesWidget } from '../../../../../../../shared/components/completed-quizzes-widget/completed-quizzes-widget';
-import { ButtonLinkerCard } from '../../../../../../../shared/components/button-linker-card/button-linker-card';
+import { CompletedQuizzesWidget } from '../../../../../../../shared/components/dashboard/completed-quizzes-widget/completed-quizzes-widget';
+import { ButtonLinkerCard } from '../../../../../../../shared/components/dashboard/button-linker-card/button-linker-card';
 import { GroupsService } from '../../../../../instructor/modules/group/services/groups.service';
 @Component({
   imports: [
@@ -89,7 +89,7 @@ export class QuizHome implements OnInit {
 
         this.isJoining.set(false);
         this.closeJoinDialog();
-        this.router.navigate(['/dashboard/learner/quizzes', res.data.quiz]);
+        this.router.navigate(['current-quiz', res.data.quiz]);
       },
       error: (err) => {
         this.isJoining.set(false);

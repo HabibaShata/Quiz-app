@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { PageLayout } from '../../../../../../../shared/layouts/page-layout/page-layout';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
 import { TableModule } from 'primeng/table';
-import { EmptyStateComponent } from '../../../../../../../shared/components/empty-state/empty-state.component';
+import { EmptyStateComponent } from '../../../../../../../shared/components/general/empty-state/empty-state.component';
 import { ActivatedRoute } from '@angular/router';
 import { ResultsService } from '../../../../../instructor/modules/results/services/results.service';
 import { DatePipe } from '@angular/common';

@@ -9,7 +9,7 @@ import { AuthService } from '../../../../features/auth/services/auth.service';
 import { Button } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import { filter } from 'rxjs';
-import { LanguageSwitcherComponent } from '../../../components/language-switcher/language-switcher.component';
+import { LanguageSwitcherComponent } from '../../../components/general/language-switcher/language-switcher.component';
 import {
   GroupOption,
   IQuizPayload,
@@ -66,7 +66,7 @@ export class NavBar implements OnInit {
 
       this.pageTitle.set(route.snapshot.data['title'] ?? 'Dashboard');
     });
-    if(this.userRole() === RoleEnum.Instructor){
+    if (this.userRole() === RoleEnum.Instructor) {
       this.loadGroups();
     }
   }
