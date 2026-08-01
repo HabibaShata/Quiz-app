@@ -16,6 +16,7 @@ import { QuestionType, DifficultyEnum } from '../../enums/question.enum';
   styleUrl: './page-layout.scss',
 })
 export class PageLayout {
+  layoutClass = input<string>('');
   title = input<string>();
   showButton = input(false);
   linkUrl = input<string>();

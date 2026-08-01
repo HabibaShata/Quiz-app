@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RoleEnum } from '../../../../core/enum/role.enum';
 import { AuthService } from '../../../../features/auth/services/auth.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export interface NavItem {
   label: string;
@@ -101,7 +102,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
 ];
 @Component({
   selector: 'app-navigation-sidebar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive,TranslatePipe],
   templateUrl: './navigation-sidebar.html',
   styleUrl: './navigation-sidebar.scss',
 })

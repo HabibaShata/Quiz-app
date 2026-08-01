@@ -7,18 +7,4 @@ export const LEARNER_QUIZZES_ROUTES: Routes = [
       title: 'Quizzez',
     },
   },
-  {
-    path: 'view-quiz/:id',
-    loadComponent: () => import("../../../instructor/modules/quizzes/components/view-quiz/view-quiz").then((c) => c.ViewQuiz),
-    data: {
-      title: 'View Quiz',
-    },
-  },
-  {
-    path: ':id',
-    loadComponent: () => import('./components/quiz-stepper/quiz-stepper').then((c) => c.QuizStepper),
-    data: {
-      title: 'Quiz',
-    },
-  },
 ];

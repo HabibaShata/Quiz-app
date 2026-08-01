@@ -7,17 +7,17 @@ import { Popover } from 'primeng/popover';
 import { TranslatePipe } from '@ngx-translate/core';
 // import { RoleEnum } from '../../../core/enum/role.enum';
 // import { ICurrentUser } from '../../../features/auth/interfaces/auth';
-import { AuthService } from '../../../features/auth/services/auth.service';
+import { AuthService } from '../../../../features/auth/services/auth.service';
 @Component({
   selector: 'app-profile-dropdown',
-  imports: [RouterLink, Popover,TranslatePipe],
+  imports: [RouterLink, Popover, TranslatePipe],
   templateUrl: './profile-dropdown.component.html',
   styleUrl: './profile-dropdown.component.scss',
 })
 export class ProfileDropdownComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router)
- // currentUser!: ICurrentUser | null;
+  // currentUser!: ICurrentUser | null;
   // currentUser$ = this.authService.currentUser$;
 
   // logout() {

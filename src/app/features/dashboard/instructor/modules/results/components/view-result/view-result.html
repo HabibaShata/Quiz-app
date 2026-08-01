@@ -1,1 +1,55 @@
-<p>view-result works!</p>
+@if (isLoading()) {
+  <app-loader></app-loader>
+} @else if (result(); as result) {
+  <p-breadcrumb [model]="breadcrumbs" styleClass="!border-none !bg-transparent !p-0 mb-3">
+  </p-breadcrumb>
+
+  <app-page-layout
+    layoutClass="results-layout"
+    [boxTitle]="'results.details'"
+    [showButton]="false"
+    [showBoxButton]="false"
+  >
+    <div>
+      <p-table [value]="result.participants" responsiveLayout="scroll" styleClass="results-table">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>{{ 'results.student_name' | translate }}</th>
+            <th>{{ 'results.score' | translate }}</th>
+            <th>{{ 'results.average' | translate }}</th>
+            <th>{{ 'results.time_submitted' | translate }}</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td>
+              {{ item.participant.first_name }}
+              {{ item.participant.last_name }}
+            </td>
+
+            <td>
+              {{ item.score }}
+            </td>
+
+            <td>
+              {{ result.quiz.score_per_question * result.quiz.questions_number }}
+            </td>
+
+            <td>
+              {{ item.started_at | date: 'HH:mm' }}
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="4" class="text-center">
+              {{ 'results.no_data' | translate }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </app-page-layout>
+}

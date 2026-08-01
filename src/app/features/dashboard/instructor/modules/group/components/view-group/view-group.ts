@@ -6,15 +6,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { Tag } from 'primeng/tag';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
-import { Loader } from "../../../../../../../shared/components/loader/loader";
+import { Loader } from "../../../../../../../shared/components/general/loader/loader";
 import { AvatarModule } from 'primeng/avatar';
 import { ProgressBarModule } from 'primeng/progressbar';
 
 @Component({
   selector: 'app-view-group',
-  imports: [DialogModule, AvatarModule ,
-    InputTextModule, ButtonModule, TranslatePipe,Tag,
-     UpperCasePipe, TitleCasePipe, Loader,ProgressBarModule,],
+  imports: [DialogModule, AvatarModule,
+    InputTextModule, ButtonModule, TranslatePipe, Tag,
+    UpperCasePipe, TitleCasePipe, Loader, ProgressBarModule,],
   templateUrl: './view-group.html',
   styleUrl: './view-group.scss',
 })

@@ -5,14 +5,14 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { IGroupData, IGroupDetails, IGroupFormData } from '../../interfaces/groups';
 import { Paginator, PaginatorState } from 'primeng/paginator';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
-import { EmptyStateComponent } from '../../../../../../../shared/components/empty-state/empty-state.component';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
+import { EmptyStateComponent } from '../../../../../../../shared/components/general/empty-state/empty-state.component';
 import { AddEditGroup } from '../add-edit-group/add-edit-group';
 import { finalize } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ViewGroup } from '../view-group/view-group';
-import { DeleteConfig } from '../../../../../../../shared/components/delete/interfaces/delete';
-import { AlertDeleteService } from '../../../../../../../shared/components/delete/services/alert-delete-sevice';
+import { DeleteConfig } from '../../../../../../../shared/components/general/delete/interfaces/delete';
+import { AlertDeleteService } from '../../../../../../../shared/components/general/delete/services/alert-delete-sevice';
 import { Button } from 'primeng/button';
 
 @Component({

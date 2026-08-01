@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth-guard';
+import { roleGuard } from './core/guards/role-guard';
+import { RoleEnum } from './core/enum/role.enum';
 
 export const routes: Routes = [
   {
@@ -18,9 +20,16 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    canActivate: [authGuard, roleGuard([RoleEnum.Student])],
+    path: 'current-quiz/:id',
+    title: 'Current Quiz',
+    loadComponent: () =>
+      import('./features/dashboard/learner/modules/learner-quiz/components/quiz-stepper/quiz-stepper').then((m) => m.QuizStepper),
+  },
+  {
     path: '**',
     title: 'Page Not Found',
     loadComponent: () =>
-      import('./shared/components/not-found/not-found.component').then((m) => m.NotFoundComponent),
+      import('./shared/components/general/not-found/not-found.component').then((m) => m.NotFoundComponent),
   },
 ];

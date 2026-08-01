@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dialog } from 'primeng/dialog';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
 import { Tag } from 'primeng/tag';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';

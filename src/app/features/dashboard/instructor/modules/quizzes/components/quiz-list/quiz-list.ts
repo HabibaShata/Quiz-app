@@ -84,7 +84,7 @@ export class QuizList implements OnInit {
         this.isLoading.set(false);
         this.messageService.add({
           severity: 'error',
-          summary: this.translate.instant('COMMON.ERROR'),
+          summary: this.translate.instant('common.error'),
           detail: err?.error?.message || 'Failed to load upcoming quizzes',
         });
       },
@@ -102,7 +102,7 @@ export class QuizList implements OnInit {
         this.isLoading.set(false);
         this.messageService.add({
           severity: 'error',
-          summary: this.translate.instant('COMMON.ERROR'),
+          summary: this.translate.instant('common.error'),
           detail: err?.error?.message || 'Failed to load completed quizzes',
         });
       },

@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IQuiz } from '../../../features/dashboard/instructor/modules/quizzes/interfaces/quiz';
+import { IQuiz } from '../../../../features/dashboard/instructor/modules/quizzes/interfaces/quiz';
 export interface QuizSummary {
   id: string;
   title: string;

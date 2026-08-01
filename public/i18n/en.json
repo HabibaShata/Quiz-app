@@ -96,6 +96,14 @@
       "submit_btn": "Sign Up"
     }
   },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "students": "Students",
+    "questions": "Questions",
+    "quizzes": "Quizzes",
+    "groups": "Groups",
+    "results": "Results"
+  },
   "account": {
     "profile": "Profile",
     "dashboard": "Dashboard",
@@ -268,7 +276,13 @@
       "date": "Date",
       "actions": "Actions"
     },
-    "view": "View"
+    "view": "View",
+    "details": "Results",
+     "student_name": "Student Name",
+  "score": "Score",
+  "average": "Average",
+  "time_submitted": "Time Submitted",
+  "no_data": "No results found"
   },
   "QUIZZES": {
     "SET_UP_NEW": "Set up a new quiz",
@@ -413,4 +427,7 @@
   "question": {
     "search": "Search questions..."
   }
+
+
+
 }
