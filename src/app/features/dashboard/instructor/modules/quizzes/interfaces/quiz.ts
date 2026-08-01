@@ -1,5 +1,5 @@
 import { ApiResponse } from '../../../../../../core/interfaces/api-response.model';
-import {  DifficultyEnum,QuestionType } from '../../../../../../shared/enums/question.enum';
+import { DifficultyEnum, QuestionType } from '../../../../../../shared/enums/question.enum';
 import { IQuestion } from '../../questions/interfaces/questions';
 
 export interface IQuiz {
@@ -24,7 +24,6 @@ export interface IQuiz {
   __v?: number;
 }
 
-
 export interface QuizDetails extends Omit<IQuiz, 'questions'> {
   questions: IQuestion[];
 }
@@ -45,6 +44,15 @@ export interface IQuizPayload {
   duration: number;
   score_per_question: number;
 }
+export interface IEditQuizPayload {
+  title: string;
+  description: string;
+  questions_number: number;
+  type: QuestionType;
+  schadule: Date;
+  duration: number;
+  score_per_question: number;
+}
 
 export interface GroupOption {
   label: string;
@@ -55,9 +63,3 @@ export interface GroupOption {
 export type IQuizResponse = ApiResponse<IQuiz>;
 export type UpcomingQuiz = IQuiz;
 export type CompletedQuiz = IQuiz;
-
-
-
-
-
-

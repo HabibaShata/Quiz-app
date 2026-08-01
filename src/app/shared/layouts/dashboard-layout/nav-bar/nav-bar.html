@@ -9,7 +9,10 @@
     </p-button>
     <app-language-switcher></app-language-switcher>
     <div class="w-3">
-      <div class="flex align-items-center gap-2 cursor-pointer w=[100%]" (click)="userMenu.toggle($event)">
+      <div
+        class="flex align-items-center gap-2 cursor-pointer w=[100%]"
+        (click)="userMenu.toggle($event)"
+      >
         <p-avatar [label]="userInitials()" shape="circle" styleClass="bg-purple-500 text-white" />
         <div class="flex flex-column line-height-2">
           <span class="font-medium text-sm">{{ userName() }}</span>
@@ -21,5 +24,9 @@
     </div>
   </div>
 </header>
-<quiz-app-add-edit-quiz [(visible)]="showDialog" [loading]="addEditLoad()" (submitForm)="saveQuiz($event)"
-  [groups]="groupsOptions()" />
+<quiz-app-add-edit-quiz
+  [(visible)]="showDialog"
+  [loading]="addEditLoad()"
+  (submitForm)="saveQuiz($event)"
+  [groups]="groupsOptions()"
+/>

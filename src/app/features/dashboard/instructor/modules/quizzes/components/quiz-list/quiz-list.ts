@@ -12,11 +12,12 @@ import { GroupOption, IQuiz, IQuizPayload } from '../../interfaces/quiz';
 import { AddEditQuiz } from '../add-edit-quiz/add-edit-quiz';
 import { GroupsService } from '../../../group/services/groups.service';
 import { finalize } from 'rxjs';
-import { CompletedQuizzesWidget } from '../../../../../../../shared/components/dashboard/completed-quizzes-widget/completed-quizzes-widget';
-import { UpcomingQuizzesCard } from '../../../../../../../shared/components/dashboard/upcoming-quizzes-card/upcoming-quizzes-card';
-import { Loader } from '../../../../../../../shared/components/general/loader/loader';
-import { DashboardWidget } from '../../../../../../../shared/components/dashboard/dashboard-widget/dashboard-widget';
-import { ButtonLinkerCard } from '../../../../../../../shared/components/dashboard/button-linker-card/button-linker-card';
+import { CompletedQuizzesWidget } from '../../../../../../../shared/components/completed-quizzes-widget/completed-quizzes-widget';
+import { UpcomingQuizzesCard } from '../../../../../../../shared/components/upcoming-quizzes-card/upcoming-quizzes-card';
+import { Loader } from '../../../../../../../shared/components/loader/loader';
+import { DashboardWidget } from '../../../../../../../shared/components/dashboard-widget/dashboard-widget';
+import { ButtonLinkerCard } from '../../../../../../../shared/components/button-linker-card/button-linker-card';
+import { QuizCodeDialog } from '../quiz-code-dialog/quiz-code-dialog';
 @Component({
   selector: 'quiz-app-quiz-list',
   imports: [
@@ -33,6 +34,7 @@ import { ButtonLinkerCard } from '../../../../../../../shared/components/dashboa
     Loader,
     DashboardWidget,
     ButtonLinkerCard,
+    QuizCodeDialog,
   ],
   providers: [MessageService],
   templateUrl: './quiz-list.html',
@@ -52,6 +54,8 @@ export class QuizList implements OnInit {
 
   showDialog = signal(false);
   addEditLoad = signal(false);
+  showSuccessDialog = signal(false);
+  quizCode = signal<string>('');
 
   ngOnInit(): void {
     this.getIncomingQuizzes();
@@ -133,17 +137,22 @@ export class QuizList implements OnInit {
       : this.quizzesService.createQuiz(data);
 
     request$.pipe(finalize(() => this.addEditLoad.set(false))).subscribe({
-      next: () => {
+      next: (res) => {
         this.showDialog.set(false);
+
+        if (!isEdit) {
+          this.quizCode.set(res.data.code);
+          this.showSuccessDialog.set(true);
+        } else {
+          this.messageService.add({
+            severity: 'success',
+            summary: this.translate.instant('common.success'),
+            detail: this.translate.instant('quizzes.update_success'),
+          });
+        }
+
         this.getIncomingQuizzes();
         this.getCompletedQuizzes();
-        this.messageService.add({
-          severity: 'success',
-          summary: this.translate.instant('common.success'),
-          detail: this.translate.instant(
-            isEdit ? 'quizzes.update_success' : 'quizzes.create_success',
-          ),
-        });
       },
       error: (err) => {
         this.messageService.add({
@@ -156,3 +165,4 @@ export class QuizList implements OnInit {
     });
   }
 }
+//GNU0ERL
