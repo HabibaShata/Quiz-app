@@ -4,12 +4,12 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api';
 import { finalize } from 'rxjs';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { Loader } from '../../../../../../../shared/components/loader/loader';
 import { ResultsService } from '../../services/results.service';
 import { IResultsResponse } from '../../interfaces/results';
 import { TableModule } from 'primeng/table';
-import { PageLayout } from '../../../../../../../shared/layouts/page-layout/page-layout';
 import { DatePipe } from '@angular/common';
+import { Loader } from '../../../../../../../shared/components/general/loader/loader';
+import { PageLayout } from '../../../../../../../shared/layouts/page-layout/page-layout';
 
 @Component({
   selector: 'quiz-app-view-result',
