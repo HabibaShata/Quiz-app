@@ -16,7 +16,7 @@ export interface NavItem {
 
 export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
   {
-    label: 'Dashboard',
+    label: 'navigation.dashboard',
     route: 'instructor',
     exact: true,
     icon: {
@@ -25,7 +25,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
     },
   },
   {
-    label: 'Students',
+    label: 'navigation.students',
     route: 'instructor/students',
     exact: false,
     icon: {
@@ -34,7 +34,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
     },
   },
   {
-    label: 'Questions',
+    label: 'navigation.questions',
     route: 'instructor/questions',
     exact: false,
     icon: {
@@ -43,7 +43,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
     },
   },
   {
-    label: 'Quizzes',
+    label: 'navigation.quizzes',
     route: 'instructor/quizzes',
     exact: false,
     icon: {
@@ -52,7 +52,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
     },
   },
   {
-    label: 'Groups',
+    label: 'navigation.groups',
     route: 'instructor/groups',
     exact: false,
     icon: {
@@ -61,7 +61,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
     },
   },
   {
-    label: 'Results',
+    label: 'navigation.results',
     route: 'instructor/results',
     exact: false,
     icon: {
@@ -73,7 +73,7 @@ export const INSTRUCTOR_NAV_ITEMS: NavItem[] = [
 
 export const STUDENT_NAV_ITEMS: NavItem[] = [
   {
-    label: 'Dashboard',
+    label: 'navigation.dashboard',
     route: 'learner',
     exact: true,
     icon: {
@@ -82,7 +82,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
     },
   },
   {
-    label: 'Quizzes',
+    label: 'navigation.quizzes',
     route: 'learner/quizzes',
     exact: false,
     icon: {
@@ -91,7 +91,7 @@ export const STUDENT_NAV_ITEMS: NavItem[] = [
     },
   },
   {
-    label: 'Results',
+    label: 'navigation.results',
     route: 'learner/results',
     exact: false,
     icon: {

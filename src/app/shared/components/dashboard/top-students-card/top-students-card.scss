@@ -37,5 +37,9 @@
     font-weight: 800;
     background: #0d1321;
     color: #fff;
+    &:lang(ar) {
+      margin-left: 0.5rem;
+      transform: rotate(-180deg);
+    }
   }
 }

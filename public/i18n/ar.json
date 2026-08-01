@@ -96,7 +96,7 @@
       "submit_btn": "إنشاء حساب"
     }
   },
-    "navigation": {
+  "navigation": {
     "dashboard": "الرئيسية",
     "students": "الطلاب",
     "questions": "الأسئلة",
@@ -218,14 +218,14 @@
       "difficulty": "مستوى الصعوبة",
       "date": "تاريخ الإنشاء",
       "actions": "الإجراءات",
-      "type": "يكتب"
+      "type": "الفئة"
     },
     "question_form": {
       "title": "العنوان",
       "description": "الوصف",
       "answer": "الإجابة الصحيحة",
-      "type": "نوع الفئة",
-      "select_type": "يكتب",
+      "type": " الفئة",
+      "select_type": "اختر الفئة",
       "option_a": "أ",
       "option_b": "ب",
       "option_c": " ج",
@@ -276,13 +276,12 @@
       "actions": "الإجراءات"
     },
     "view": "عرض",
-     "details": "النتائج",
-      "student_name": "اسم الطالب",
-  "score": "الدرجة",
-  "average": "المتوسط",
-  "time_submitted": "وقت التسليم",
-  "no_data": "لا توجد نتائج"
-
+    "details": "النتائج",
+    "student_name": "اسم الطالب",
+    "score": "الدرجة",
+    "average": "المتوسط",
+    "time_submitted": "وقت التسليم",
+    "no_data": "لا توجد نتائج"
   },
   "QUIZZES": {
     "SET_UP_NEW": "إعداد اختبار جديد",
@@ -338,7 +337,7 @@
     "home": "الرئيسية",
     "quizzes": "الاختبارات",
     "code": "الكود",
-"group": "المجموعة",
+    "group": "المجموعة",
     "duration": "المدة",
     "minutes": "دقيقة",
     "number_of_questions": "عدد الأسئلة",
@@ -418,5 +417,9 @@
   },
   "question": {
     "search": "أسئلة البحث..."
+  },
+  "quizCard": {
+    "enrolledStudents": "عدد الطلاب المسجلين",
+    "open": "فتح"
   }
 }

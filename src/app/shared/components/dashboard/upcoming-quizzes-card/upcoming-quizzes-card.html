@@ -16,14 +16,15 @@
 
       <div class="flex align-items-center justify-content-between">
         <span class="text-sm font-medium">
-          No. of student's enrolled: {{ quiz().participants }}
+          {{ 'quizCard.enrolledStudents' | translate }}:
+          {{ quiz().participants }}
         </span>
         @if(showRouting()){
-          <a 
+          <a
           [routerLink]="[routingLink(), quiz()._id]"
           class="quiz-card__open-link flex align-items-center gap-2 text-sm font-bold no-underline"
         >
-          <span>Open</span>
+           <span>{{ 'quizCard.open' | translate }}</span>
 
           <i class="pi pi-arrow-right quiz-card__open-icon"></i>
         </a>

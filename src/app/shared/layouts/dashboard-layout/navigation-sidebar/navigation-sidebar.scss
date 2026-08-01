@@ -1,9 +1,17 @@
 .sidebar {
   //   width: 260px;
-  border-right: 1px solid var(--surface-border);
   background: var(--white-color);
   transition: width 0.2s ease;
   height: 100%;
+
+  &:lang(en) {
+    border-right: 1px solid var(--surface-border);
+  }
+
+  &:lang(ar) {
+    border-left: 1px solid var(--surface-border);
+  }
+
   .bars-icon {
     font-size: 27px;
     font-weight: 600;
@@ -48,10 +56,17 @@
     }
 
     &--active {
-      border-right: 5px solid #0d1321 !important;
       .sidebar__nav-item__icon-container {
         background: #0d1321;
         color: #fff;
+      }
+
+      &:lang(en) {
+        border-right: 5px solid #0d1321 !important;
+      }
+
+      &:lang(ar) {
+        border-left: 5px solid #0d1321 !important;
       }
     }
   }

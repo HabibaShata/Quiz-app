@@ -40,5 +40,9 @@
     font-weight: 600;
     background: #c5d86d;
     color: #fff;
+    &:lang(ar) {
+      margin-left: 0.5rem;
+      transform: rotate(-180deg);
+    }
   }
 }

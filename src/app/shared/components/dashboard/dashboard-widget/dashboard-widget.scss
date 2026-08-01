@@ -12,3 +12,9 @@
     color: #c5d86d;
   }
 }
+
+.dashboard-widget__link-icon{
+  &:lang(ar){
+    transform: rotate(-180deg);
+  }
+}
