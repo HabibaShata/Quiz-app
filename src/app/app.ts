@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Toast } from 'primeng/toast';
+import { LanguageService } from './core/services/language.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Toast],
@@ -9,4 +10,9 @@ import { Toast } from 'primeng/toast';
 })
 export class App {
   protected readonly title = signal('quiz-app');
+  private readonly languageService = inject(LanguageService);
+
+  ngOnInit() {
+    this.languageService.initializeLanguage();
+  }
 }
